@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tweet from './Tweet';
+import Tweet from './Post';
 import ProfileDetails from './ProfileDetails';
 
 const Profile = ({ profile, param }) => {

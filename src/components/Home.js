@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Timeline from './Timeline';
 import Nav from './Nav';
 import Profile from './Profile';
-import Tweet from './Tweet';
+import Post from './Post';
+import NewPost from './NewPost';
 
 import elon from '../assets/elonprofile.jpg';
 import pomp from '../assets/pompprofile.jpg';
@@ -14,50 +15,56 @@ import spacemike from '../assets/spacemikeprofile.jpg';
 import jupiter from '../assets/jupiter.jpg';
 import eloncover from '../assets/eloncover.jpg';
 import pompcover from '../assets/pompcover.jpg';
+import me from '../assets/meprofile.jpg';
 
 const Home = () => {
   const data = [
-    { name: 'Pomp', tweet: 'I love crypto', img: pomp, link: '?user=pomp' },
+    { name: 'Pomp', post: 'I love crypto', img: pomp, link: '?user=pomp' },
     {
       name: 'Space Explorer Mike',
-      tweet: 'Jupiter’s south pole, taken by NASAs Juno space probe',
-      tweetimg: jupiter,
+      post: 'Jupiter’s south pole, taken by NASAs Juno space probe',
+      postimg: jupiter,
       img: spacemike,
       link: '?user=space',
     },
     {
       name: 'Barstool',
-      tweet: 'Post about sports bruh',
+      post: 'Post about sports bruh',
       img: barstool,
       link: '?user=bar',
     },
     {
       name: 'Elon Musk',
-      tweet: 'You can now buy a Tesla with Bitcoin',
+      post: 'You can now buy a Tesla with Bitcoin',
       img: elon,
       link: '?user=elon',
     },
     {
       name: 'The Wolf of All Streets',
-      tweet:
+      post:
         'Just had and absolutely incredible podcast conversation with @KoroushAK so much so that I am pushing it for a release this Thursday. I cant wait to share.',
       img: wolf,
       link: '?user=wolf',
     },
   ];
 
+  const [feedState, setFeedState] = useState([
+    { post: 'This is my first post' },
+    { post: 'Woah, this is a cool app!' },
+  ]);
+
   const profile = {
     pomp: {
       name: 'Pomp',
-      tweets: [
+      posts: [
         {
-          tweet: 'You can now buy a Tesla with Bitcoin',
+          post: 'You can now buy a Tesla with Bitcoin',
         },
         {
-          tweet:
+          post:
             'Stock market is not growing exponentially? Don’t worry. Theyre now talking about a $3 trillion infrastructure bill. Bear markets and corrections are outlawed!',
         },
-        { tweet: 'LMAO this can’t be real' },
+        { post: 'LMAO this can’t be real' },
       ],
       img: pomp,
       link: '?user=pomp',
@@ -65,12 +72,12 @@ const Home = () => {
     },
     elon: {
       name: 'Elon Musk',
-      tweets: [
+      posts: [
         {
-          tweet: 'You can now buy a Tesla with Bitcoin',
+          post: 'You can now buy a Tesla with Bitcoin',
         },
-        { tweet: 'Doge to the Moon!' },
-        { tweet: 'Why are you so dogematic, they ask.' },
+        { post: 'Doge to the Moon!' },
+        { post: 'Why are you so dogematic, they ask.' },
       ],
       img: elon,
       cover: eloncover,
@@ -78,17 +85,24 @@ const Home = () => {
     },
     wolf: {
       name: 'The Wolf of All Streets',
-      tweets: [
+      posts: [
         {
-          tweet:
+          post:
             'Just had and absolutely incredible podcast conversation with @KoroushAK so much so that I am pushing it for a release this Thursday. I cant wait to share',
         },
-        { tweet: 'I think we are about to BULL' },
-        { tweet: 'Bitcoin looking good' },
+        { post: 'I think we are about to BULL' },
+        { post: 'Bitcoin looking good' },
       ],
       img: wolf,
       cover: '../assets/eloncover.jpg',
       link: '?user=wolf',
+    },
+    wolf: {
+      name: 'Me',
+      posts: feedState,
+      img: me,
+      cover: '../assets/eloncover.jpg',
+      link: '?user=me',
     },
   };
 
@@ -97,17 +111,27 @@ const Home = () => {
 
   const array = ['pomp', 'elon', 'wolf'];
 
+  const handlePost = (post) => {
+    setFeedState([...feedState, post]);
+  };
+
+  console.log(feedState);
+
   return (
     <>
       <Router>
         <div className='grid-container'>
           <Nav />
+          <>
+            <div className='post-background'></div>
+            <NewPost addPost={handlePost} />
+          </>
           <div className='inner-container'>
             <Switch>
               <Route exact path='/'>
                 {array.map((a) =>
-                  profile[a].tweets.map((t) => (
-                    <Tweet profile={profile} tweet={t} param={a} />
+                  profile[a].posts.map((t) => (
+                    <Post profile={profile} post={t} param={a} />
                   ))
                 )}
               </Route>
