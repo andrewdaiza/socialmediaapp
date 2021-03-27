@@ -97,9 +97,9 @@ const Home = () => {
       cover: '../assets/eloncover.jpg',
       link: '?user=wolf',
     },
-    wolf: {
+    me: {
       name: 'Me',
-      posts: feedState,
+      posts: [feedState],
       img: me,
       cover: '../assets/eloncover.jpg',
       link: '?user=me',
@@ -109,7 +109,7 @@ const Home = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const userParam = urlParams.get('user');
 
-  const array = ['pomp', 'elon', 'wolf'];
+  const array = ['pomp', 'elon', 'wolf', 'me'];
 
   const handlePost = (post) => {
     setFeedState([...feedState, post]);
@@ -122,10 +122,10 @@ const Home = () => {
       <Router>
         <div className='grid-container'>
           <Nav />
-          <>
+          {/* <>
             <div className='post-background'></div>
             <NewPost addPost={handlePost} />
-          </>
+          </> */}
           <div className='inner-container'>
             <Switch>
               <Route exact path='/'>

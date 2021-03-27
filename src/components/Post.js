@@ -23,8 +23,12 @@ const Post = ({ profile, post, param }) => {
             <div className='post-user'>{profile[param].name}</div>
           </a>
           <div className='post-text'>{post.post}</div>
-          {post.tweetimg && (
-            <img className='post-photo' src={post.tweetimg} alt='post photo' />
+          {profile[param].tweetimg && (
+            <img
+              className='post-photo'
+              src={profile[param].tweetimg}
+              alt='post photo'
+            />
           )}
           <div className='post-likes'>
             <i class='far fa-comment'></i>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tweet from './Post';
+import Post from './Post';
 import ProfileDetails from './ProfileDetails';
 
 const Profile = ({ profile, param }) => {
@@ -8,8 +8,8 @@ const Profile = ({ profile, param }) => {
   return (
     <div>
       <ProfileDetails profile={profile} param={param} />
-      {profile[param].tweets.map((t) => (
-        <Tweet profile={profile} tweet={t} param={param} />
+      {profile[param].posts.map((t) => (
+        <Post profile={profile} post={t} param={param} />
       ))}
     </div>
   );
