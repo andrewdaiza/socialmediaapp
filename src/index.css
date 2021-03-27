@@ -1,13 +1,186 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 18px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 10px;
+  grid-template-areas:
+    'Nav Tweets Profile'
+    '. Tweets .'
+    '. Tweets .';
+  margin: 10px auto;
+  width: 1200px;
+}
+.nav {
+  grid-area: Nav;
+  justify-self: end;
+  border: 1px solid grey;
+  height: 20vh;
+  text-align: center;
+  width: 75%;
+}
+.nav a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  padding: 10px 10px;
+}
+.tweets-container {
+  grid-area: Tweets;
+  width: 600px;
+}
+.tweets {
+  width: 600px;
+  border: 1px solid grey;
+}
+.tweets-inner {
+  display: flex;
+  padding: 10px;
+}
+.tweet-profile-pic {
+  border-radius: 200px;
+  width: 75px;
+  height: 75px;
+}
+.tweet-user {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.tweet-details {
+  padding-left: 15px;
+}
+
+.tweet-details a {
+  text-decoration: none;
+  color: #000;
+}
+.tweet-details a:visited {
+  text-decoration: none;
+  color: #000;
+}
+.tweet-photo {
+  width: 500px;
+}
+.tweet-likes {
+  margin-top: 15px;
+}
+.tweet-likes i {
+  font-size: 20px;
+  padding: 0px 20px;
+}
+.profile {
+  grid-area: Profile;
+  justify-self: start;
+  border: 1px solid grey;
+  width: 200px;
+}
+.profile-container {
+  border: 1px solid grey;
+  width: 600px;
+}
+.profile-photo {
+  border-radius: 200px;
+  width: 125px;
+  height: 125px;
+}
+.profile-name {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 10px 0px;
+}
+.profile-description {
+  margin: 10px 0px;
+}
+
+.profile-details {
+  padding: 10px 20px;
+}
+.cover-photo {
+  width: 600px;
+  height: 200px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.1fr 1fr 1fr;
+    gap: 0px 10px;
+    grid-template-areas:
+      'Nav Tweets .'
+      '. Tweets .'
+      '. Tweets .';
+    margin: 10px 0;
+  }
+  .tweets-container {
+    grid-area: Tweets;
+    margin: 0px 0px;
+  }
+  .nav {
+    justify-self: end;
+    width: 50%;
+  }
+  .profile {
+    display: none;
+  }
+
+  .tweet-photo {
+    width: 500px;
+  }
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 500px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      'Nav'
+      'Tweets'
+      'Tweets';
+    margin: 0px 0px;
+    width: 100%;
+  }
+  .tweets-container {
+    grid-area: Tweets;
+    width: 100%;
+    margin: 0px 0px;
+  }
+  .tweets {
+    padding: 10px 10px;
+  }
+  .nav {
+    width: 100%;
+    margin: 0px 0px;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav a {
+    padding: 10px 10px;
+  }
+  .tweet-photo {
+    width: 100%;
+  }
+  .profile {
+    display: none;
+  }
+  .profile-container {
+    width: 100%;
+  }
+  .cover-photo {
+    width: 100%;
+    height: 200px;
+  }
 }
