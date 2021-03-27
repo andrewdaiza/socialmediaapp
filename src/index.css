@@ -33,7 +33,7 @@ body {
   text-decoration: none;
   padding: 10px 10px;
 }
-.tweets-container {
+.inner-container {
   grid-area: Tweets;
   width: 600px;
 }
@@ -87,6 +87,9 @@ body {
   border: 1px solid grey;
   width: 600px;
 }
+.profile-inner-container {
+  padding: 10px;
+}
 .profile-photo {
   border-radius: 200px;
   width: 125px;
@@ -120,7 +123,7 @@ body {
       '. Tweets .';
     margin: 10px 0;
   }
-  .tweets-container {
+  .inner-container {
     grid-area: Tweets;
     margin: 0px 0px;
   }
@@ -149,12 +152,15 @@ body {
     margin: 0px 0px;
     width: 100%;
   }
-  .tweets-container {
+  .inner-container {
     grid-area: Tweets;
     width: 100%;
     margin: 0px 0px;
   }
   .tweets {
+    width: 100%;
+  }
+  .tweets-inner {
     padding: 10px 10px;
   }
   .nav {

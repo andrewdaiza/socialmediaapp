@@ -102,7 +102,7 @@ const Home = () => {
       <Router>
         <div className='grid-container'>
           <Nav />
-          <div className='tweets-container'>
+          <div className='inner-container'>
             <Switch>
               <Route exact path='/'>
                 {array.map((a) =>

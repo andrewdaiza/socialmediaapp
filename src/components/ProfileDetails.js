@@ -10,7 +10,7 @@ const ProfileDetails = ({ profile, param }) => {
           src={profile[param].cover}
           alt='cover photo'
         />
-        <div className='profile-container'>
+        <div className='profile-inner-container'>
           <img className='profile-photo' src={profile[param].img} />
           <div className='profile-name'>{profile[param].name}</div>
           <div className='profile-description'>
