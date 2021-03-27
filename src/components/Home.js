@@ -99,7 +99,7 @@ const Home = () => {
     },
     me: {
       name: 'Me',
-      posts: [feedState],
+      posts: feedState,
       img: me,
       cover: '../assets/eloncover.jpg',
       link: '?user=me',
