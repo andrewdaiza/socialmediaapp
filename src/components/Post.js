@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Post = ({ profile, post, param }) => {
+const Post = ({ profile, post, param, commentUpState }) => {
   const [like, setLike] = useState(true);
 
   const toggle = () => {
@@ -31,15 +31,20 @@ const Post = ({ profile, post, param }) => {
             />
           )}
           <div className='post-likes'>
-            <i class='far fa-comment'></i>
             <span onClick={() => toggle()}>
               {like ? (
                 <i class='far fa-heart'></i>
               ) : (
-                <i class='fas fa-heart'>1</i>
+                <i class='fas fa-heart'>
+                  <span>1</span>
+                </i>
               )}
             </span>
-            <i class='fas fa-retweet'></i>
+            <span>Like</span>
+            <a onClick={() => commentUpState(param)}>
+              <i class='far fa-comment-alt'></i>
+              <span>Comment</span>
+            </a>
           </div>
         </div>
       </div>
