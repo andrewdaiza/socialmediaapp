@@ -3,19 +3,19 @@ import React from 'react';
 import Post from './Post';
 import ProfileDetails from './ProfileDetails';
 
-const Profile = ({ profile, param }) => {
-  console.log(profile[param]);
+const Profile = ({ profiles, param }) => {
   return (
     <div>
-      <ProfileDetails profile={profile} param={param} />
-      {profile[param].posts.map((t) => (
-        <Post
-          key={profile[param].id}
-          profile={profile}
-          post={t}
-          param={param}
-        />
-      ))}
+      <ProfileDetails profiles={profiles} />
+      {profiles.map((profile) =>
+        profile.posts.map((post) =>
+          profile.user === param ? (
+            <Post key={profile.id} profile={profile} post={post} />
+          ) : (
+            ''
+          )
+        )
+      )}
     </div>
   );
 };

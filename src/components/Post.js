@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Post = ({ profile, post, param, commentUpState }) => {
+const Post = ({ post, profile, commentUpState }) => {
   const [like, setLike] = useState(true);
 
   const toggleLike = () => {
@@ -9,24 +9,20 @@ const Post = ({ profile, post, param, commentUpState }) => {
   return (
     <div className='tweets'>
       <div className='tweets-inner'>
-        <a href={`/profile${profile[param].link}`}>
+        <a href={`/profile${profile.link}`}>
           <img
             className='post-profile-pic'
-            src={profile[param].img}
+            src={profile.img}
             alt='Profile Picture'
           />
         </a>
         <div className='post-details'>
-          <a href={`/profile${profile[param].link}`}>
-            <div className='post-user'>{profile[param].name}</div>
+          <a href={`/profile${post.link}`}>
+            <div className='post-user'>{profile.name}</div>
           </a>
           <div className='post-text'>{post.post}</div>
-          {profile[param].tweetimg && (
-            <img
-              className='post-photo'
-              src={profile[param].tweetimg}
-              alt='post photo'
-            />
+          {post.tweetimg && (
+            <img className='post-photo' src={post.tweetimg} alt='post photo' />
           )}
           <div className='post-likes'>
             <span onClick={() => toggleLike()}>
@@ -39,7 +35,7 @@ const Post = ({ profile, post, param, commentUpState }) => {
               )}
             </span>
             <span>Like</span>
-            <a onClick={() => commentUpState(param)}>
+            <a onClick={() => commentUpState()}>
               <i class='far fa-comment-alt'></i>
               <span>Comment</span>
             </a>
