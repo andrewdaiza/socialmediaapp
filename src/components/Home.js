@@ -169,7 +169,11 @@ const Home = () => {
                 )}
               </Route>
               <Route exact path='/profile'>
-                <Profile profiles={profiles} param={userParam} />
+                <Profile
+                  profiles={profiles}
+                  param={userParam}
+                  commentUpState={handleCommentUpState}
+                />
               </Route>
             </Switch>
           </div>
