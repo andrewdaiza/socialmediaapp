@@ -8,9 +8,9 @@ const Comment = ({ commentUp, addComment, clickedUserComment }) => {
     if (!comment) {
       return;
     }
-    addComment({ comment });
+    addComment(comment);
     setComment('');
-    commentUp();
+    // commentUp();
   };
   return (
     <>

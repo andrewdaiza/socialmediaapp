@@ -1,8 +1,15 @@
 import React from 'react';
 
 import Comment from './Comment';
+import ShowComment from './ShowComment';
 
-const Comments = ({ commentUp, addComment, clickedUserComment }) => {
+const Comments = ({
+  commentState,
+  profile,
+  commentUp,
+  addComment,
+  clickedUserComment,
+}) => {
   return (
     <div className='comments-container pop-out'>
       <Comment
@@ -10,6 +17,9 @@ const Comments = ({ commentUp, addComment, clickedUserComment }) => {
         addComment={addComment}
         clickedUserComment={clickedUserComment}
       />
+      {commentState.map((c) => (
+        <ShowComment commentState={c} />
+      ))}
     </div>
   );
 };

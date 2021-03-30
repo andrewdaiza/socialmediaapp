@@ -3,10 +3,8 @@ import React, { useState } from 'react';
 const Post = ({ profile, post, param, commentUpState }) => {
   const [like, setLike] = useState(true);
 
-  const toggle = () => {
-    let localLike = like;
-    localLike = !localLike;
-    setLike(localLike);
+  const toggleLike = () => {
+    setLike(!like);
   };
   return (
     <div className='tweets'>
@@ -31,7 +29,7 @@ const Post = ({ profile, post, param, commentUpState }) => {
             />
           )}
           <div className='post-likes'>
-            <span onClick={() => toggle()}>
+            <span onClick={() => toggleLike()}>
               {like ? (
                 <i class='far fa-heart'></i>
               ) : (

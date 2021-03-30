@@ -24,8 +24,8 @@ const Home = () => {
     { post: 'Woah, this is a cool app!' },
   ]);
   const [commentState, setCommentState] = useState([
-    { comment: 'What a great idea' },
-    { comment: 'Oh wow cool' },
+    'What a great idea',
+    'Oh wow cool',
   ]);
 
   const profile = {
@@ -45,6 +45,7 @@ const Home = () => {
         },
         { post: 'LMAO this can’t be real' },
       ],
+      comments: commentState,
     },
     elon: {
       name: 'Elon Musk',
@@ -59,6 +60,7 @@ const Home = () => {
         { post: 'Doge to the Moon!' },
         { post: 'Why are you so dogematic, they ask.' },
       ],
+      comments: commentState,
     },
     wolf: {
       name: 'The Wolf of All Streets',
@@ -74,6 +76,7 @@ const Home = () => {
         { post: 'I think we are about to BULL' },
         { post: 'Bitcoin looking good' },
       ],
+      comments: commentState,
     },
     me: {
       name: 'Me',
@@ -82,6 +85,7 @@ const Home = () => {
       img: me,
       cover: '../assets/eloncover.jpg',
       link: '?user=me',
+      comments: commentState,
     },
   };
 
@@ -109,13 +113,9 @@ const Home = () => {
   };
 
   const handleComment = (comment) => {
-    for (const pro in profile) {
-      if (pro === clickedUserComment) {
-        setCommentState([...commentState, comment]);
-      }
-    }
+    setCommentState([...commentState, comment]);
+    console.log(profile);
   };
-  console.log(commentState);
 
   return (
     <>
@@ -136,6 +136,8 @@ const Home = () => {
               {document.body.classList.add('background-grey')}
               <div className='post-background'></div>
               <Comments
+                commentState={commentState}
+                profile={profile}
                 addComment={handleComment}
                 commentUp={handleCommentUpState}
                 clickedUserComment={clickedUserComment}

@@ -9,7 +9,12 @@ const Profile = ({ profile, param }) => {
     <div>
       <ProfileDetails profile={profile} param={param} />
       {profile[param].posts.map((t) => (
-        <Post profile={profile} post={t} param={param} />
+        <Post
+          key={profile[param].id}
+          profile={profile}
+          post={t}
+          param={param}
+        />
       ))}
     </div>
   );
