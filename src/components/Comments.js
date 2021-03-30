@@ -9,18 +9,27 @@ const Comments = ({
   commentUp,
   addComment,
   clickedUserComment,
+  commentUpState,
 }) => {
   return (
-    <div className='comments-container pop-out'>
-      <Comment
-        commentUp={commentUp}
-        addComment={addComment}
-        clickedUserComment={clickedUserComment}
-      />
-      {commentState.map((c) => (
-        <ShowComment commentState={c} />
-      ))}
-    </div>
+    <>
+      {commentUpState ? (
+        <div className='comments-container pop-out'>
+          {document.body.classList.add('background-grey')}
+          <div className='post-background'></div>
+          <Comment
+            commentUp={commentUp}
+            addComment={addComment}
+            clickedUserComment={clickedUserComment}
+          />
+          {commentState.map((c) => (
+            <ShowComment commentState={c} />
+          ))}
+        </div>
+      ) : (
+        document.body.classList.remove('background-grey')
+      )}
+    </>
   );
 };
 

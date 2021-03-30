@@ -35,7 +35,7 @@ const Post = ({ post, profile, commentUpState }) => {
               )}
             </span>
             <span>Like</span>
-            <a onClick={() => commentUpState()}>
+            <a onClick={() => commentUpState(profile.user)}>
               <i class='far fa-comment-alt'></i>
               <span>Comment</span>
             </a>

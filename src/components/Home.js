@@ -54,6 +54,22 @@ const Home = () => {
     { post: 'This is my first post' },
     { post: 'Woah, this is a cool app!' },
   ]);
+  const [pompComments, setPompComments] = useState([
+    'this is a pomp comment',
+    'Oh wow cool',
+  ]);
+  const [elonComments, setElonComments] = useState([
+    'this is an elon comment',
+    'Oh wow cool',
+  ]);
+  const [wolfComments, setWolfComments] = useState([
+    'this is a wolf comment',
+    'Oh wow cool',
+  ]);
+  const [meComments, setMeComments] = useState([
+    'this is a me comment',
+    'Oh wow cool',
+  ]);
 
   const profiles = [
     {
@@ -64,7 +80,7 @@ const Home = () => {
       link: '?user=pomp',
       cover: pompcover,
       posts: pompPosts,
-      comments: commentState,
+      comments: pompComments,
     },
     {
       id: 2,
@@ -74,7 +90,7 @@ const Home = () => {
       cover: eloncover,
       link: '?user=elon',
       posts: elonPosts,
-      comments: commentState,
+      comments: elonComments,
     },
     {
       id: 3,
@@ -84,7 +100,7 @@ const Home = () => {
       cover: '../assets/eloncover.jpg',
       link: '?user=wolf',
       posts: wolfPosts,
-      comments: commentState,
+      comments: wolfComments,
     },
     {
       id: 4,
@@ -94,7 +110,7 @@ const Home = () => {
       cover: '../assets/eloncover.jpg',
       link: '?user=me',
       posts: mePosts,
-      comments: commentState,
+      comments: meComments,
     },
   ];
 
@@ -129,30 +145,20 @@ const Home = () => {
       <Router>
         <div className='grid-container'>
           <Nav popUp={handlePopUp} />
-          {popUpState ? (
-            <>
-              {document.body.classList.add('background-grey')}
-              <div className='post-background'></div>
-              <NewPost addPost={handlePost} popUp={handlePopUp} />
-            </>
-          ) : (
-            document.body.classList.remove('background-grey')
-          )}
-          {commentUpState ? (
-            <>
-              {document.body.classList.add('background-grey')}
-              <div className='post-background'></div>
-              <Comments
-                commentState={commentState}
-                profiles={profiles}
-                addComment={handleComment}
-                commentUp={handleCommentUpState}
-                clickedUserComment={clickedUserComment}
-              />
-            </>
-          ) : (
-            document.body.classList.remove('background-grey')
-          )}
+          <NewPost
+            addPost={handlePost}
+            popUp={handlePopUp}
+            popUpState={popUpState}
+          />
+
+          <Comments
+            commentState={commentState}
+            commentUpState={commentUpState}
+            profiles={profiles}
+            addComment={handleComment}
+            commentUp={handleCommentUpState}
+            clickedUserComment={clickedUserComment}
+          />
 
           <div className='inner-container'>
             <Switch>
