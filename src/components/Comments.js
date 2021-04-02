@@ -5,10 +5,9 @@ import ShowComment from './ShowComment';
 
 const Comments = ({
   commentState,
-  profile,
   commentUp,
   addComment,
-  clickedUserComment,
+  selectedUser,
   commentUpState,
 }) => {
   return (
@@ -20,11 +19,14 @@ const Comments = ({
           <Comment
             commentUp={commentUp}
             addComment={addComment}
-            clickedUserComment={clickedUserComment}
+            selectedUser={selectedUser}
           />
-          {commentState.map((c) => (
-            <ShowComment commentState={c} />
-          ))}
+          {commentState.map(
+            (c) =>
+              c.profile.id === selectedUser.id && (
+                <ShowComment commentState={c} />
+              )
+          )}
         </div>
       ) : (
         document.body.classList.remove('background-grey')

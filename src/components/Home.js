@@ -19,58 +19,6 @@ import pompcover from '../assets/pompcover.jpg';
 import me from '../assets/meprofile.jpg';
 
 const Home = () => {
-  const [commentState, setCommentState] = useState([
-    'What a great idea',
-    'Oh wow cool',
-  ]);
-
-  const [pompPosts, setPompPosts] = useState([
-    {
-      post: 'You can now buy a Tesla with Bitcoin',
-    },
-    {
-      post:
-        'Stock market is not growing exponentially? Don’t worry. Theyre now talking about a $3 trillion infrastructure bill. Bear markets and corrections are outlawed!',
-    },
-    { post: 'LMAO this can’t be real' },
-  ]);
-
-  const [elonPosts, setElonPosts] = useState([
-    {
-      post: 'You can now buy a Tesla with Bitcoin',
-    },
-    { post: 'Doge to the Moon!' },
-    { post: 'Why are you so dogematic, they ask.' },
-  ]);
-  const [wolfPosts, setWolfPosts] = useState([
-    {
-      post:
-        'Just had and absolutely incredible podcast conversation with @KoroushAK so much so that I am pushing it for a release this Thursday. I cant wait to share',
-    },
-    { post: 'I think we are about to BULL' },
-    { post: 'Bitcoin looking good' },
-  ]);
-  const [mePosts, setMePosts] = useState([
-    { post: 'This is my first post' },
-    { post: 'Woah, this is a cool app!' },
-  ]);
-  const [pompComments, setPompComments] = useState([
-    'this is a pomp comment',
-    'Oh wow cool',
-  ]);
-  const [elonComments, setElonComments] = useState([
-    'this is an elon comment',
-    'Oh wow cool',
-  ]);
-  const [wolfComments, setWolfComments] = useState([
-    'this is a wolf comment',
-    'Oh wow cool',
-  ]);
-  const [meComments, setMeComments] = useState([
-    'this is a me comment',
-    'Oh wow cool',
-  ]);
-
   const profiles = [
     {
       id: 1,
@@ -79,8 +27,6 @@ const Home = () => {
       img: pomp,
       link: '?user=pomp',
       cover: pompcover,
-      posts: pompPosts,
-      comments: pompComments,
     },
     {
       id: 2,
@@ -89,8 +35,6 @@ const Home = () => {
       img: elon,
       cover: eloncover,
       link: '?user=elon',
-      posts: elonPosts,
-      comments: elonComments,
     },
     {
       id: 3,
@@ -99,8 +43,6 @@ const Home = () => {
       img: wolf,
       cover: '../assets/eloncover.jpg',
       link: '?user=wolf',
-      posts: wolfPosts,
-      comments: wolfComments,
     },
     {
       id: 4,
@@ -109,10 +51,42 @@ const Home = () => {
       img: me,
       cover: '../assets/eloncover.jpg',
       link: '?user=me',
-      posts: mePosts,
-      comments: meComments,
     },
   ];
+
+  const [userPosts, setUserPosts] = useState([
+    { profile: profiles[0], post: 'You can now buy a Tesla with Bitcoin' },
+    {
+      profile: profiles[0],
+      post:
+        'Stock market is not growing exponentially? Don’t worry. Theyre now talking about a $3 trillion infrastructure bill. Bear markets and corrections are outlawed!',
+    },
+    { profile: profiles[0], post: 'LMAO this can’t be real' },
+    {
+      profile: profiles[1],
+      post: 'You can now buy a Tesla with Bitcoin',
+    },
+    { profile: profiles[1], post: 'Doge to the Moon!' },
+    { profile: profiles[1], post: 'Why are you so dogematic, they ask.' },
+
+    {
+      profile: profiles[2],
+      post:
+        'Just had and absolutely incredible podcast conversation with @KoroushAK so much so that I am pushing it for a release this Thursday. I cant wait to share',
+    },
+    { profile: profiles[2], post: 'I think we are about to BULL' },
+    { profile: profiles[2], post: 'Bitcoin looking good' },
+
+    { profile: profiles[3], post: 'This is my first post' },
+    { profile: profiles[3], post: 'Woah, this is a cool app!' },
+  ]);
+
+  const [commentState, setCommentState] = useState([
+    { profile: profiles[0], comment: 'this is a pomp comment' },
+    { profile: profiles[1], comment: 'this is an elon comment' },
+    { profile: profiles[2], comment: 'this is a wolf comment' },
+    { profile: profiles[3], comment: 'this is a me comment' },
+  ]);
 
   const urlParams = new URLSearchParams(window.location.search);
   const userParam = urlParams.get('user');
@@ -124,22 +98,21 @@ const Home = () => {
   };
 
   const handlePost = (post) => {
-    setMePosts([...mePosts, post]);
+    setUserPosts([...userPosts, post]);
   };
   const [commentUpState, setCommentUpState] = useState(false);
 
-  const [clickedUserComment, setClickedUserComment] = useState();
+  const [selectedUser, setSelectedUser] = useState();
 
   const handleCommentUpState = (param) => {
-    setClickedUserComment(param);
+    setSelectedUser(param);
     setCommentUpState(!commentUpState);
   };
 
   const handleComment = (comment) => {
     setCommentState([...commentState, comment]);
-    console.log(profiles);
   };
-
+  console.log(commentState);
   return (
     <>
       <Router>
@@ -154,10 +127,9 @@ const Home = () => {
           <Comments
             commentState={commentState}
             commentUpState={commentUpState}
-            profiles={profiles}
             addComment={handleComment}
             commentUp={handleCommentUpState}
-            clickedUserComment={clickedUserComment}
+            selectedUser={selectedUser}
           />
 
           <div className='inner-container'>
@@ -165,13 +137,17 @@ const Home = () => {
               <Route exact path='/'>
                 {/* Maps through each profile user and each post within, outputs to post element */}
                 {profiles.map((profile) =>
-                  profile.posts.map((post) => (
-                    <Post
-                      profile={profile}
-                      post={post}
-                      commentUpState={handleCommentUpState}
-                    />
-                  ))
+                  userPosts.map(
+                    (post) =>
+                      profile.id === post.profile.id && (
+                        <Post
+                          profile={profile}
+                          post={post}
+                          userPosts={userPosts}
+                          commentUpState={handleCommentUpState}
+                        />
+                      )
+                  )
                 )}
               </Route>
               <Route exact path='/profile'>
@@ -179,6 +155,7 @@ const Home = () => {
                   profiles={profiles}
                   param={userParam}
                   commentUpState={handleCommentUpState}
+                  userPosts={userPosts}
                 />
               </Route>
             </Switch>
