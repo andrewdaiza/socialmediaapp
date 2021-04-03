@@ -10,16 +10,18 @@ const Profile = ({ profiles, param, commentUpState, userPosts }) => {
         profile.user === param ? <ProfileDetails profile={profile} /> : ''
       )}
 
-      {userPosts.map((post) =>
-        post.profile.user === param ? (
-          <Post
-            key={post.id}
-            profile={post.profile}
-            post={post}
-            commentUpState={commentUpState}
-          />
-        ) : (
-          ''
+      {profiles.map((profile) =>
+        userPosts.map((post) =>
+          profile.user === param && profile.id === post.profile ? (
+            <Post
+              key={post.id}
+              profile={profile}
+              post={post}
+              commentUpState={commentUpState}
+            />
+          ) : (
+            ''
+          )
         )
       )}
     </div>

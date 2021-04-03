@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 
-const NewPostForm = ({ addPost, popUp, popUpState }) => {
-  const [name, setName] = useState('Me');
+const NewPostForm = ({ addPost, popUp, profile }) => {
   const [post, setPost] = useState('');
   const onSubmit = (e) => {
     e.preventDefault();
     if (!post) {
       return;
     }
-    addPost({ post });
+    addPost({ profile, post });
     setPost('');
     popUp();
   };
+  console.log(profile);
   return (
     <>
       <form onSubmit={onSubmit}>

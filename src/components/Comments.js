@@ -9,6 +9,7 @@ const Comments = ({
   addComment,
   selectedUser,
   commentUpState,
+  profiles,
 }) => {
   return (
     <>
@@ -21,11 +22,14 @@ const Comments = ({
             addComment={addComment}
             selectedUser={selectedUser}
           />
-          {commentState.map(
-            (c) =>
-              c.profile.id === selectedUser.id && (
-                <ShowComment commentState={c} />
-              )
+          {profiles.map((profile) =>
+            commentState.map(
+              (c) =>
+                profile.id === c.profile &&
+                c.profile === selectedUser.id && (
+                  <ShowComment commentState={c} profile={profile} />
+                )
+            )
           )}
         </div>
       ) : (

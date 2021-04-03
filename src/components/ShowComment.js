@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ShowComment = ({ commentState }) => {
+const ShowComment = ({ commentState, profile }) => {
   return (
     <>
-      <h3>{commentState.profile.name}</h3>
+      <h3>{profile.name}</h3>
       <p>{commentState.comment}</p>
     </>
   );

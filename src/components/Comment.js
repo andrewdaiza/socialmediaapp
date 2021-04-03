@@ -7,7 +7,7 @@ const Comment = ({ commentUp, addComment, selectedUser }) => {
     if (!comment) {
       return;
     }
-    addComment({ profile: selectedUser, comment: comment });
+    addComment({ profile: selectedUser.id, comment: comment });
     setComment('');
   };
   return (

@@ -55,37 +55,37 @@ const Home = () => {
   ];
 
   const [userPosts, setUserPosts] = useState([
-    { profile: profiles[0], post: 'You can now buy a Tesla with Bitcoin' },
+    { profile: profiles[0].id, post: 'You can now buy a Tesla with Bitcoin' },
     {
-      profile: profiles[0],
+      profile: profiles[0].id,
       post:
         'Stock market is not growing exponentially? Don’t worry. Theyre now talking about a $3 trillion infrastructure bill. Bear markets and corrections are outlawed!',
     },
-    { profile: profiles[0], post: 'LMAO this can’t be real' },
+    { profile: profiles[0].id, post: 'LMAO this can’t be real' },
     {
-      profile: profiles[1],
+      profile: profiles[1].id,
       post: 'You can now buy a Tesla with Bitcoin',
     },
-    { profile: profiles[1], post: 'Doge to the Moon!' },
-    { profile: profiles[1], post: 'Why are you so dogematic, they ask.' },
+    { profile: profiles[1].id, post: 'Doge to the Moon!' },
+    { profile: profiles[1].id, post: 'Why are you so dogematic, they ask.' },
 
     {
-      profile: profiles[2],
+      profile: profiles[2].id,
       post:
         'Just had and absolutely incredible podcast conversation with @KoroushAK so much so that I am pushing it for a release this Thursday. I cant wait to share',
     },
-    { profile: profiles[2], post: 'I think we are about to BULL' },
-    { profile: profiles[2], post: 'Bitcoin looking good' },
+    { profile: profiles[2].id, post: 'I think we are about to BULL' },
+    { profile: profiles[2].id, post: 'Bitcoin looking good' },
 
-    { profile: profiles[3], post: 'This is my first post' },
-    { profile: profiles[3], post: 'Woah, this is a cool app!' },
+    { profile: profiles[3].id, post: 'This is my first post' },
+    { profile: profiles[3].id, post: 'Woah, this is a cool app!' },
   ]);
 
   const [commentState, setCommentState] = useState([
-    { profile: profiles[0], comment: 'this is a pomp comment' },
-    { profile: profiles[1], comment: 'this is an elon comment' },
-    { profile: profiles[2], comment: 'this is a wolf comment' },
-    { profile: profiles[3], comment: 'this is a me comment' },
+    { profile: profiles[0].id, comment: 'this is a pomp comment' },
+    { profile: profiles[1].id, comment: 'this is an elon comment' },
+    { profile: profiles[2].id, comment: 'this is a wolf comment' },
+    { profile: profiles[3].id, comment: 'this is a me comment' },
   ]);
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -122,6 +122,7 @@ const Home = () => {
             addPost={handlePost}
             popUp={handlePopUp}
             popUpState={popUpState}
+            profile={profiles[3].id}
           />
 
           <Comments
@@ -130,6 +131,7 @@ const Home = () => {
             addComment={handleComment}
             commentUp={handleCommentUpState}
             selectedUser={selectedUser}
+            profiles={profiles}
           />
 
           <div className='inner-container'>
@@ -139,7 +141,7 @@ const Home = () => {
                 {profiles.map((profile) =>
                   userPosts.map(
                     (post) =>
-                      profile.id === post.profile.id && (
+                      profile.id === post.profile && (
                         <Post
                           profile={profile}
                           post={post}
