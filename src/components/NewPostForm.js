@@ -7,8 +7,9 @@ const NewPostForm = ({ addPost, popUp, profile }) => {
     if (!post) {
       return;
     }
+
     const id = Math.floor(Math.random() * 10000);
-    addPost({ id, profile, post });
+    addPost({ id, profile, liked: false, likeCount: 0, post });
     setPost('');
     popUp();
   };
