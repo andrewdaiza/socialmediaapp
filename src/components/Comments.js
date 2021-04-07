@@ -31,7 +31,7 @@ const Comments = ({
             commentState.map(
               (c) =>
                 c.profile === profile.id &&
-                c.commentId === selectedComment && (
+                c.postId === selectedComment && (
                   <ShowComment commentState={c} profile={profile} />
                 )
             )

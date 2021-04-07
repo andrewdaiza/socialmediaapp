@@ -15,8 +15,8 @@ const Comment = ({
       return;
     }
     addComment({
+      postId: selectedComment,
       profile: profiles[3].id,
-      commentId: selectedComment,
       comment: comment,
     });
     setComment('');

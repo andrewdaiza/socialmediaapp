@@ -56,70 +56,110 @@ const Home = () => {
 
   const [userPosts, setUserPosts] = useState([
     {
+      id: 100,
       profile: profiles[0].id,
-      commentId: 100,
+      liked: false,
+      likeCount: 3,
       post: 'You can now buy a Tesla with Bitcoin',
     },
     {
+      id: 101,
       profile: profiles[0].id,
-      commentId: 101,
+      liked: false,
+      likeCount: 0,
       post:
         'Stock market is not growing exponentially? Don’t worry. Theyre now talking about a $3 trillion infrastructure bill. Bear markets and corrections are outlawed!',
     },
     {
+      id: 102,
       profile: profiles[0].id,
-      commentId: 102,
+      liked: false,
+      likeCount: 0,
       post: 'LMAO this can’t be real',
     },
     {
+      id: 103,
       profile: profiles[1].id,
-      commentId: 103,
+      liked: false,
+      likeCount: 0,
       post: 'You can now buy a Tesla with Bitcoin',
     },
-    { profile: profiles[1].id, commentId: 104, post: 'Doge to the Moon!' },
     {
+      id: 104,
       profile: profiles[1].id,
-      commentId: 105,
+      liked: false,
+      likeCount: 0,
+      post: 'Doge to the Moon!',
+    },
+    {
+      id: 105,
+      profile: profiles[1].id,
+      liked: false,
+      likeCount: 0,
       post: 'Why are you so dogematic, they ask.',
     },
 
     {
+      id: 106,
       profile: profiles[2].id,
-      commentId: 106,
+      liked: false,
+      likeCount: 0,
       post:
         'Just had and absolutely incredible podcast conversation with @KoroushAK so much so that I am pushing it for a release this Thursday. I cant wait to share',
     },
-    { profile: profiles[2].id, post: 'I think we are about to BULL' },
-    { profile: profiles[2].id, post: 'Bitcoin looking good' },
+    {
+      id: 107,
+      profile: profiles[2].id,
+      liked: false,
+      likeCount: 0,
+      post: 'I think we are about to BULL',
+    },
+    {
+      id: 108,
+      profile: profiles[2].id,
+      liked: false,
+      likeCount: 0,
+      post: 'Bitcoin looking good',
+    },
 
-    { profile: profiles[3].id, post: 'This is my first post' },
-    { profile: profiles[3].id, post: 'Woah, this is a cool app!' },
+    {
+      id: 109,
+      profile: profiles[3].id,
+      liked: false,
+      likeCount: 0,
+      post: 'This is my first post',
+    },
+    {
+      id: 110,
+      profile: profiles[3].id,
+      liked: false,
+      likeCount: 0,
+      post: 'Woah, this is a cool app!',
+    },
   ]);
 
   const [commentState, setCommentState] = useState([
     {
+      postId: 100,
       profile: profiles[0].id,
-      commentId: 100,
       comment: 'this is a pomp comment',
     },
     {
+      postId: 101,
       profile: profiles[1].id,
-      commentId: 101,
       comment: 'this is an elon comment',
     },
     {
+      postId: 102,
       profile: profiles[2].id,
-      commentId: 102,
       comment: 'this is a wolf comment',
     },
     {
+      postId: 103,
       profile: profiles[3].id,
-      commentId: 103,
       comment: 'this is a me comment',
     },
   ]);
-
-  const [likesState, setLikesState] = useState([{}]);
 
   const urlParams = new URLSearchParams(window.location.search);
   const userParam = urlParams.get('user');
@@ -136,6 +176,7 @@ const Home = () => {
   const [commentUpState, setCommentUpState] = useState(false);
 
   const [selectedComment, setSelectedComment] = useState();
+  const [selectedLike, setSelectedLike] = useState(0);
 
   const handleCommentUpState = (param) => {
     setSelectedComment(param);
@@ -145,9 +186,21 @@ const Home = () => {
   const handleComment = (comment) => {
     setCommentState([...commentState, comment]);
   };
-  const handleLike = (like) => {
-    setLikesState([...likesState, like]);
+  const handleLike = (id) => {
+    setUserPosts(
+      userPosts.map((post) =>
+        post.id === id
+          ? {
+              ...post,
+              liked: !post.liked,
+              likeCount: post.liked ? post.likeCount - 1 : post.likeCount + 1,
+            }
+          : post
+      )
+    );
   };
+
+  console.log(userPosts);
   console.log(commentState);
   return (
     <>
@@ -184,7 +237,7 @@ const Home = () => {
                           userPosts={userPosts}
                           commentUpState={handleCommentUpState}
                           addLike={handleLike}
-                          likesState={likesState}
+                          selectedLike={selectedLike}
                         />
                       )
                   )

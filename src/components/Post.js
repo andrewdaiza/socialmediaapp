@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
 
 const Post = ({ post, profile, commentUpState, addLike, likesState }) => {
-  const [like, setLike] = useState(true);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeToggle, setLikeToggle] = useState(false);
+  const [selectedLike, setSelectedLike] = useState();
 
-  const toggleLike = (profileId) => {
-    setLike(!like);
-    likesState.map((likes) => {
-      if (likes.profileId === profile.id) {
-        setLikeCount(0);
-        addLike({ profileId: profileId, likes: likeCount });
-      } else {
-        setLikeCount(likeCount + 1);
-        addLike({ profileId: profileId, likes: likeCount });
-      }
-    });
-  };
+  // const handleLike = (like) => {
+  //   if (like.liked) {
+  //     addLike({
+  //       postId: post.id,
+  //       liked: !like.liked,
+  //       likeCount: like.likeCount - 1,
+  //     });
+  //   } else {
+  //     addLike({
+  //       postId: post.id,
+  //       liked: !like.liked,
+  //       likeCount: like.likeCount + 1,
+  //     });
+  //   }
+  //   setSelectedLike(like);
+  // };
+
+  // const toggleLike = () => {
+  //   setLikeToggle(!likeToggle);
+  //   likesState.map((like) => like.postId === post.id && handleLike(like));
+  // };
+
   return (
     <div className='tweets'>
       <div className='tweets-inner'>
@@ -27,7 +37,7 @@ const Post = ({ post, profile, commentUpState, addLike, likesState }) => {
           />
         </a>
         <div className='post-details'>
-          <a href={`/profile${post.link}`}>
+          <a href={`/profile${profile.link}`}>
             <div className='post-user'>{profile.name}</div>
           </a>
           <div className='post-text'>{post.post}</div>
@@ -35,17 +45,19 @@ const Post = ({ post, profile, commentUpState, addLike, likesState }) => {
             <img className='post-photo' src={post.tweetimg} alt='post photo' />
           )}
           <div className='post-likes'>
-            <span onClick={() => toggleLike(profile.id)}>
-              {like ? (
-                <i class='far fa-heart'></i>
-              ) : (
+            <span onClick={() => addLike(post.id)}>
+              {post.liked ? (
                 <i class='fas fa-heart'>
-                  <span>1</span>
+                  <span>{post.likeCount}</span>
+                </i>
+              ) : (
+                <i class='far fa-heart'>
+                  <span>{post.likeCount}</span>
                 </i>
               )}
             </span>
             <span>Like</span>
-            <a onClick={() => commentUpState(post.commentId)}>
+            <a onClick={() => commentUpState(post.id)}>
               <i class='far fa-comment-alt'></i>
               <span>Comment</span>
             </a>
