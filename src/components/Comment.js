@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 
-const Comment = ({ commentUp, addComment, selectedUser }) => {
+const Comment = ({
+  commentUp,
+  addComment,
+  profiles,
+  profile,
+  commentState,
+  selectedComment,
+}) => {
   const [comment, setComment] = useState('');
   const onSubmit = (e) => {
     e.preventDefault();
     if (!comment) {
       return;
     }
-    addComment({ profile: selectedUser.id, comment: comment });
+    addComment({
+      profile: profiles[3].id,
+      commentId: selectedComment,
+      comment: comment,
+    });
     setComment('');
   };
   return (

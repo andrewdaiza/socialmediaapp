@@ -55,22 +55,37 @@ const Home = () => {
   ];
 
   const [userPosts, setUserPosts] = useState([
-    { profile: profiles[0].id, post: 'You can now buy a Tesla with Bitcoin' },
     {
       profile: profiles[0].id,
+      commentId: 100,
+      post: 'You can now buy a Tesla with Bitcoin',
+    },
+    {
+      profile: profiles[0].id,
+      commentId: 101,
       post:
         'Stock market is not growing exponentially? Don’t worry. Theyre now talking about a $3 trillion infrastructure bill. Bear markets and corrections are outlawed!',
     },
-    { profile: profiles[0].id, post: 'LMAO this can’t be real' },
+    {
+      profile: profiles[0].id,
+      commentId: 102,
+      post: 'LMAO this can’t be real',
+    },
     {
       profile: profiles[1].id,
+      commentId: 103,
       post: 'You can now buy a Tesla with Bitcoin',
     },
-    { profile: profiles[1].id, post: 'Doge to the Moon!' },
-    { profile: profiles[1].id, post: 'Why are you so dogematic, they ask.' },
+    { profile: profiles[1].id, commentId: 104, post: 'Doge to the Moon!' },
+    {
+      profile: profiles[1].id,
+      commentId: 105,
+      post: 'Why are you so dogematic, they ask.',
+    },
 
     {
       profile: profiles[2].id,
+      commentId: 106,
       post:
         'Just had and absolutely incredible podcast conversation with @KoroushAK so much so that I am pushing it for a release this Thursday. I cant wait to share',
     },
@@ -82,11 +97,29 @@ const Home = () => {
   ]);
 
   const [commentState, setCommentState] = useState([
-    { profile: profiles[0].id, comment: 'this is a pomp comment' },
-    { profile: profiles[1].id, comment: 'this is an elon comment' },
-    { profile: profiles[2].id, comment: 'this is a wolf comment' },
-    { profile: profiles[3].id, comment: 'this is a me comment' },
+    {
+      profile: profiles[0].id,
+      commentId: 100,
+      comment: 'this is a pomp comment',
+    },
+    {
+      profile: profiles[1].id,
+      commentId: 101,
+      comment: 'this is an elon comment',
+    },
+    {
+      profile: profiles[2].id,
+      commentId: 102,
+      comment: 'this is a wolf comment',
+    },
+    {
+      profile: profiles[3].id,
+      commentId: 103,
+      comment: 'this is a me comment',
+    },
   ]);
+
+  const [likesState, setLikesState] = useState([{}]);
 
   const urlParams = new URLSearchParams(window.location.search);
   const userParam = urlParams.get('user');
@@ -102,15 +135,18 @@ const Home = () => {
   };
   const [commentUpState, setCommentUpState] = useState(false);
 
-  const [selectedUser, setSelectedUser] = useState();
+  const [selectedComment, setSelectedComment] = useState();
 
   const handleCommentUpState = (param) => {
-    setSelectedUser(param);
+    setSelectedComment(param);
     setCommentUpState(!commentUpState);
   };
 
   const handleComment = (comment) => {
     setCommentState([...commentState, comment]);
+  };
+  const handleLike = (like) => {
+    setLikesState([...likesState, like]);
   };
   console.log(commentState);
   return (
@@ -130,8 +166,8 @@ const Home = () => {
             commentUpState={commentUpState}
             addComment={handleComment}
             commentUp={handleCommentUpState}
-            selectedUser={selectedUser}
             profiles={profiles}
+            selectedComment={selectedComment}
           />
 
           <div className='inner-container'>
@@ -147,6 +183,8 @@ const Home = () => {
                           post={post}
                           userPosts={userPosts}
                           commentUpState={handleCommentUpState}
+                          addLike={handleLike}
+                          likesState={likesState}
                         />
                       )
                   )

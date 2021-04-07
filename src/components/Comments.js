@@ -10,6 +10,7 @@ const Comments = ({
   selectedUser,
   commentUpState,
   profiles,
+  selectedComment,
 }) => {
   return (
     <>
@@ -17,16 +18,20 @@ const Comments = ({
         <div className='comments-container pop-out'>
           {document.body.classList.add('background-grey')}
           <div className='post-background'></div>
+
           <Comment
             commentUp={commentUp}
             addComment={addComment}
             selectedUser={selectedUser}
+            profiles={profiles}
+            selectedComment={selectedComment}
           />
+
           {profiles.map((profile) =>
             commentState.map(
               (c) =>
-                profile.id === c.profile &&
-                c.profile === selectedUser.id && (
+                c.profile === profile.id &&
+                c.commentId === selectedComment && (
                   <ShowComment commentState={c} profile={profile} />
                 )
             )
@@ -35,6 +40,7 @@ const Comments = ({
       ) : (
         document.body.classList.remove('background-grey')
       )}
+      {console.log(selectedComment)}
     </>
   );
 };

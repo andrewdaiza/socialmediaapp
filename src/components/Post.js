@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 
-const Post = ({ post, profile, commentUpState }) => {
+const Post = ({ post, profile, commentUpState, addLike, likesState }) => {
   const [like, setLike] = useState(true);
+  const [likeCount, setLikeCount] = useState(0);
 
-  const toggleLike = () => {
+  const toggleLike = (profileId) => {
     setLike(!like);
+    likesState.map((likes) => {
+      if (likes.profileId === profile.id) {
+        setLikeCount(0);
+        addLike({ profileId: profileId, likes: likeCount });
+      } else {
+        setLikeCount(likeCount + 1);
+        addLike({ profileId: profileId, likes: likeCount });
+      }
+    });
   };
   return (
     <div className='tweets'>
@@ -25,7 +35,7 @@ const Post = ({ post, profile, commentUpState }) => {
             <img className='post-photo' src={post.tweetimg} alt='post photo' />
           )}
           <div className='post-likes'>
-            <span onClick={() => toggleLike()}>
+            <span onClick={() => toggleLike(profile.id)}>
               {like ? (
                 <i class='far fa-heart'></i>
               ) : (
@@ -35,7 +45,7 @@ const Post = ({ post, profile, commentUpState }) => {
               )}
             </span>
             <span>Like</span>
-            <a onClick={() => commentUpState(profile)}>
+            <a onClick={() => commentUpState(post.commentId)}>
               <i class='far fa-comment-alt'></i>
               <span>Comment</span>
             </a>

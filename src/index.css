@@ -56,9 +56,9 @@ body {
   padding: 10px;
 }
 .post-profile-pic {
-  border-radius: 200px;
-  width: 75px;
-  height: 75px;
+  /* border-radius: 200px; */
+  width: 100px;
+  height: 100px;
 }
 .post-user {
   font-weight: bold;
