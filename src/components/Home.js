@@ -176,7 +176,6 @@ const Home = () => {
   const [commentUpState, setCommentUpState] = useState(false);
 
   const [selectedComment, setSelectedComment] = useState();
-  const [selectedLike, setSelectedLike] = useState(0);
 
   const handleCommentUpState = (param) => {
     setSelectedComment(param);
@@ -237,7 +236,6 @@ const Home = () => {
                           userPosts={userPosts}
                           commentUpState={handleCommentUpState}
                           addLike={handleLike}
-                          selectedLike={selectedLike}
                         />
                       )
                   )
@@ -249,6 +247,7 @@ const Home = () => {
                   param={userParam}
                   commentUpState={handleCommentUpState}
                   userPosts={userPosts}
+                  addLike={handleLike}
                 />
               </Route>
             </Switch>

@@ -3,7 +3,7 @@ import React from 'react';
 import Post from './Post';
 import ProfileDetails from './ProfileDetails';
 
-const Profile = ({ profiles, param, commentUpState, userPosts }) => {
+const Profile = ({ profiles, param, commentUpState, userPosts, addLike }) => {
   return (
     <div>
       {profiles.map((profile) =>
@@ -17,7 +17,9 @@ const Profile = ({ profiles, param, commentUpState, userPosts }) => {
               key={post.id}
               profile={profile}
               post={post}
+              userPosts={userPosts}
               commentUpState={commentUpState}
+              addLike={addLike}
             />
           ) : (
             ''

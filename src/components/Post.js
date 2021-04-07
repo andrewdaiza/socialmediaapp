@@ -1,30 +1,8 @@
 import React, { useState } from 'react';
 
-const Post = ({ post, profile, commentUpState, addLike, likesState }) => {
+const Post = ({ post, profile, commentUpState, addLike }) => {
   const [likeToggle, setLikeToggle] = useState(false);
   const [selectedLike, setSelectedLike] = useState();
-
-  // const handleLike = (like) => {
-  //   if (like.liked) {
-  //     addLike({
-  //       postId: post.id,
-  //       liked: !like.liked,
-  //       likeCount: like.likeCount - 1,
-  //     });
-  //   } else {
-  //     addLike({
-  //       postId: post.id,
-  //       liked: !like.liked,
-  //       likeCount: like.likeCount + 1,
-  //     });
-  //   }
-  //   setSelectedLike(like);
-  // };
-
-  // const toggleLike = () => {
-  //   setLikeToggle(!likeToggle);
-  //   likesState.map((like) => like.postId === post.id && handleLike(like));
-  // };
 
   return (
     <div className='tweets'>

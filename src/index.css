@@ -37,11 +37,13 @@ body {
 }
 .nav-icons i {
   font-size: 30px;
-  color: rgb(0, 52, 173);
+  color: #80ffdb;
   padding: 10px 15px;
 }
-.nav-icons a {
+.nav-icons a,
+.nav-icons a::after {
   text-decoration: none;
+  color: #000;
 }
 .inner-container {
   grid-area: Tweets;
@@ -50,6 +52,8 @@ body {
 .tweets {
   width: 600px;
   border: 1px solid grey;
+  margin: 10px 0px;
+  box-shadow: 3px 3px 3px grey;
 }
 .tweets-inner {
   display: flex;
