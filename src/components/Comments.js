@@ -7,7 +7,6 @@ const Comments = ({
   commentState,
   commentUp,
   addComment,
-  selectedUser,
   commentUpState,
   profiles,
   selectedComment,
@@ -22,7 +21,6 @@ const Comments = ({
           <Comment
             commentUp={commentUp}
             addComment={addComment}
-            selectedUser={selectedUser}
             profiles={profiles}
             selectedComment={selectedComment}
           />

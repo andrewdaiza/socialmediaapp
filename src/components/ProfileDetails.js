@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProfileDetails = ({ profile, param }) => {
+const ProfileDetails = ({ profile }) => {
   return (
     <>
       <div className='profile-container'>
