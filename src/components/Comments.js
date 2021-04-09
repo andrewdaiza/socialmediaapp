@@ -38,7 +38,6 @@ const Comments = ({
       ) : (
         document.body.classList.remove('background-grey')
       )}
-      {console.log(selectedComment)}
     </>
   );
 };

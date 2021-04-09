@@ -7,6 +7,7 @@ import Profile from './Profile';
 import Post from './Post';
 import NewPost from './NewPost';
 import Comments from './Comments';
+import HomeProfile from './HomeProfile';
 
 import elon from '../assets/elonprofile.jpg';
 import pomp from '../assets/pompprofile.jpg';
@@ -51,6 +52,8 @@ const Home = () => {
       img: me,
       cover: '../assets/eloncover.jpg',
       link: '?user=me',
+      description:
+        'The sky is the limit, we dont stop until we achieve our goals',
     },
   ];
 
@@ -68,7 +71,7 @@ const Home = () => {
       liked: false,
       likeCount: 0,
       post:
-        'Stock market is not growing exponentially? Don’t worry. Theyre now talking about a $3 trillion infrastructure bill. Bear markets and corrections are outlawed!',
+        'Stock market is not growing exponentially? Don’t worry. Theyre now talking about a $3 trillion infrastructure bill.',
     },
     {
       id: 102,
@@ -105,7 +108,7 @@ const Home = () => {
       liked: false,
       likeCount: 0,
       post:
-        'Just had and absolutely incredible podcast conversation with @KoroushAK so much so that I am pushing it for a release this Thursday. I cant wait to share',
+        'Just had and absolutely incredible podcast conversation with @KoroushAK so much so that I am pushing it for a release this Thursday.',
     },
     {
       id: 107,
@@ -199,6 +202,10 @@ const Home = () => {
     );
   };
 
+  const handleDeletePost = (id) => {
+    setUserPosts(userPosts.filter((post) => id !== post.id));
+  };
+
   console.log(userPosts);
   console.log(commentState);
   return (
@@ -236,6 +243,7 @@ const Home = () => {
                           userPosts={userPosts}
                           commentUpState={handleCommentUpState}
                           addLike={handleLike}
+                          deletePost={handleDeletePost}
                         />
                       )
                   )
@@ -252,7 +260,9 @@ const Home = () => {
               </Route>
             </Switch>
           </div>
-          <div className='profile'>Profile</div>
+          <div className='home-profile-container'>
+            <HomeProfile profile={profiles[3]} />
+          </div>
         </div>
       </Router>
     </>

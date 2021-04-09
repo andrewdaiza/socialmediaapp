@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Post = ({ post, profile, commentUpState, addLike }) => {
+const Post = ({ post, profile, commentUpState, addLike, deletePost }) => {
   const [likeToggle, setLikeToggle] = useState(false);
   const [selectedLike, setSelectedLike] = useState();
 
@@ -15,6 +15,14 @@ const Post = ({ post, profile, commentUpState, addLike }) => {
           />
         </a>
         <div className='post-details'>
+          {profile.name === 'Me' && (
+            <div className='post-delete'>
+              <i
+                onClick={() => deletePost(post.id)}
+                class='far fa-trash-alt'
+              ></i>
+            </div>
+          )}
           <a href={`/profile${profile.link}`}>
             <div className='post-user'>{profile.name}</div>
           </a>
