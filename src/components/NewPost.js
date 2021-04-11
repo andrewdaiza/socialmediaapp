@@ -7,7 +7,6 @@ const NewPost = ({ addPost, popUp, popUpState, profile }) => {
     <>
       {popUpState ? (
         <div className='new-post-container pop-out'>
-          {/* <div className='post-background'></div> */}
           {document.body.classList.add('background-grey')}
           <NewPostForm addPost={addPost} popUp={popUp} profile={profile} />
         </div>

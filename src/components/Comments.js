@@ -16,7 +16,6 @@ const Comments = ({
       {commentUpState ? (
         <div className='comments-container pop-out'>
           {document.body.classList.add('background-grey')}
-          <div className='post-background'></div>
 
           <Comment
             commentUp={commentUp}
@@ -25,14 +24,11 @@ const Comments = ({
             selectedComment={selectedComment}
           />
 
-          {profiles.map((profile) =>
-            commentState.map(
-              (c) =>
-                c.profile === profile.id &&
-                c.postId === selectedComment && (
-                  <ShowComment commentState={c} profile={profile} />
-                )
-            )
+          {commentState.map(
+            (c) =>
+              c.postId === selectedComment && (
+                <ShowComment key={c.id} commentState={c} profile={c.profile} />
+              )
           )}
         </div>
       ) : (

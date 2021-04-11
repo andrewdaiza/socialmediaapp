@@ -13,24 +13,24 @@ const Profile = ({
 }) => {
   return (
     <div className='profile-container'>
-      {profiles.map((profile) =>
-        profile.user === param ? <ProfileDetails profile={profile} /> : ''
+      {profiles.map(
+        (profile) =>
+          profile.user === param && (
+            <ProfileDetails key={profile.id} profile={profile} />
+          )
       )}
-      {profiles.map((profile) =>
-        userPosts.map((post) =>
-          profile.user === param && profile.id === post.profile ? (
+      {userPosts.map(
+        (post) =>
+          post.profile.user === param && (
             <Post
               key={post.id}
-              profile={profile}
+              profile={post.profile}
               post={post}
               commentUpState={commentUpState}
               addLike={addLike}
               deletePost={deletePost}
             />
-          ) : (
-            ''
           )
-        )
       )}
     </div>
   );

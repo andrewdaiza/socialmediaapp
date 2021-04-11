@@ -9,7 +9,7 @@ const Comment = ({ commentUp, addComment, profiles, selectedComment }) => {
     }
     addComment({
       postId: selectedComment,
-      profile: profiles[3].id,
+      profile: profiles[3],
       comment: comment,
     });
     setComment('');
@@ -17,7 +17,7 @@ const Comment = ({ commentUp, addComment, profiles, selectedComment }) => {
   return (
     <div className='comment-text-area'>
       <a href='#' onClick={() => commentUp()}>
-        <i class='fas fa-times'></i>
+        <i className='fas fa-times'></i>
       </a>
       <form onSubmit={onSubmit}>
         <h3>Comment:</h3>
