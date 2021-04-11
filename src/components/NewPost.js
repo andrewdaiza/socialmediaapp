@@ -6,8 +6,8 @@ const NewPost = ({ addPost, popUp, popUpState, profile }) => {
   return (
     <>
       {popUpState ? (
-        <div className='post-container pop-out'>
-          <div className='post-background'></div>
+        <div className='new-post-container pop-out'>
+          {/* <div className='post-background'></div> */}
           {document.body.classList.add('background-grey')}
           <NewPostForm addPost={addPost} popUp={popUp} profile={profile} />
         </div>

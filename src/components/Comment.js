@@ -15,22 +15,23 @@ const Comment = ({ commentUp, addComment, profiles, selectedComment }) => {
     setComment('');
   };
   return (
-    <>
+    <div className='comment-text-area'>
+      <a href='#' onClick={() => commentUp()}>
+        <i class='fas fa-times'></i>
+      </a>
       <form onSubmit={onSubmit}>
         <h3>Comment:</h3>
-        <textarea
+        <input
+          maxLength='100'
           type='text'
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-        ></textarea>
+        ></input>
         <div>
           <button type='submit'>Comment</button>
         </div>
       </form>
-      <a href='#' onClick={() => commentUp()}>
-        close
-      </a>
-    </>
+    </div>
   );
 };
 

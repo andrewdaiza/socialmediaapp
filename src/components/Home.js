@@ -18,40 +18,64 @@ import jupiter from '../assets/jupiter.jpg';
 import eloncover from '../assets/eloncover.jpg';
 import pompcover from '../assets/pompcover.jpg';
 import me from '../assets/meprofile.jpg';
+import alexa from '../assets/profileAlexa.jpg';
+import max from '../assets/profileMax.jpg';
+import sarah from '../assets/profileSarah.jpg';
+import amy from '../assets/profileAmy.jpg';
+import jake from '../assets/profileJake.jpg';
+import jane from '../assets/profileJane.jpg';
+import sally from '../assets/profileSally.jpg';
+import sean from '../assets/profileSean.jpg';
+import sydney from '../assets/profileSydney.jpg';
+import user from '../assets/profileUser.jpg';
+import ben from '../assets/profileBen.jpg';
+import henry from '../assets/profileHenry.jpg';
+import mark from '../assets/profileMark.jpg';
+
+import coverMax from '../assets/coverMax.jpg';
+import cover1 from '../assets/cover1.jpg';
+import cover2 from '../assets/cover2.jpg';
+import cover3 from '../assets/cover3.jpg';
+import cover4 from '../assets/cover4.jpg';
+import cover5 from '../assets/cover5.jpg';
+import cover6 from '../assets/cover6.jpg';
+import cover7 from '../assets/cover7.jpg';
+import cover8 from '../assets/cover8.jpg';
+import cover9 from '../assets/cover9.jpg';
 
 const Home = () => {
   const profiles = [
     {
       id: 1,
-      name: 'Pomp',
-      user: 'pomp',
-      img: pomp,
-      link: '?user=pomp',
-      cover: pompcover,
+      name: 'Max',
+      user: 'max',
+      img: max,
+      link: '?user=max',
+      cover: coverMax,
     },
     {
       id: 2,
-      name: 'Elon Musk',
-      user: 'elon',
-      img: elon,
-      cover: eloncover,
-      link: '?user=elon',
+      name: 'Sydney',
+      user: 'sydney',
+      img: sydney,
+      cover: cover1,
+      link: '?user=sydney',
     },
     {
       id: 3,
-      name: 'The Wolf of All Streets',
-      user: 'wolf',
-      img: wolf,
-      cover: '../assets/eloncover.jpg',
-      link: '?user=wolf',
+      name: 'Henry',
+      user: 'henry',
+      img: henry,
+      cover: cover6,
+      link: '?user=henry',
     },
     {
       id: 4,
-      name: 'Me',
-      user: 'me',
-      img: me,
-      cover: '../assets/eloncover.jpg',
-      link: '?user=me',
+      name: 'User',
+      user: 'user',
+      img: ben,
+      cover: cover3,
+      link: '?user=user',
       description:
         'The sky is the limit, we dont stop until we achieve our goals',
     },
@@ -238,6 +262,7 @@ const Home = () => {
                     (post) =>
                       profile.id === post.profile && (
                         <Post
+                          key={post.id}
                           profile={profile}
                           post={post}
                           userPosts={userPosts}
@@ -256,11 +281,16 @@ const Home = () => {
                   commentUpState={handleCommentUpState}
                   userPosts={userPosts}
                   addLike={handleLike}
+                  deletePost={handleDeletePost}
                 />
               </Route>
             </Switch>
           </div>
-          <div className='home-profile-container'>
+          <div
+            className={`home-profile-container ${
+              userParam !== null && 'home-profile-none'
+            }`}
+          >
             <HomeProfile profile={profiles[3]} />
           </div>
         </div>

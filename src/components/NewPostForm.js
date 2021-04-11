@@ -13,12 +13,15 @@ const NewPostForm = ({ addPost, popUp, profile }) => {
     setPost('');
     popUp();
   };
-  console.log(profile);
   return (
-    <>
-      <form onSubmit={onSubmit}>
+    <div className='new-post-inner'>
+      <a href='#' onClick={() => popUp()}>
+        <i className='fas fa-times'></i>
+      </a>
+      <form className='new-post-form' onSubmit={onSubmit}>
         <h3>What is on your mind?</h3>
         <textarea
+          maxLength='100'
           type='text'
           value={post}
           onChange={(e) => setPost(e.target.value)}
@@ -27,10 +30,7 @@ const NewPostForm = ({ addPost, popUp, profile }) => {
           <button type='submit'>Post</button>
         </div>
       </form>
-      <a href='#' onClick={() => popUp()}>
-        close
-      </a>
-    </>
+    </div>
   );
 };
 

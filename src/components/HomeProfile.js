@@ -3,9 +3,12 @@ import React from 'react';
 const HomeProfile = ({ profile }) => {
   return (
     <div className='home-profile-inner'>
-      <img className='home-profile-img' src={profile.img}></img>
-      <div>{profile.name}</div>
-      <div>{profile.description}</div>
+      <a href='/profile?user=user'>
+        <img className='home-profile-img' src={profile.img}></img>
+        <div className='home-profile-name'>{profile.name}</div>
+        <div className='home-profile-user'>@{profile.user}</div>
+      </a>
+      <div className='home-profile-description'>{profile.description}</div>
     </div>
   );
 };
