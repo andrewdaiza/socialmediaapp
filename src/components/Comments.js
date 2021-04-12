@@ -13,10 +13,8 @@ const Comments = ({
 }) => {
   return (
     <>
-      {commentUpState ? (
+      {commentUpState && (
         <div className='comments-container pop-out'>
-          {document.body.classList.add('background-grey')}
-
           <Comment
             commentUp={commentUp}
             addComment={addComment}
@@ -31,8 +29,6 @@ const Comments = ({
               )
           )}
         </div>
-      ) : (
-        document.body.classList.remove('background-grey')
       )}
     </>
   );

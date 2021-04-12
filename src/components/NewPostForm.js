@@ -27,7 +27,9 @@ const NewPostForm = ({ addPost, popUp, profile }) => {
           onChange={(e) => setPost(e.target.value)}
         ></textarea>
         <div>
-          <button type='submit'>Post</button>
+          <button class='post-button' type='submit'>
+            Post
+          </button>
         </div>
       </form>
     </div>

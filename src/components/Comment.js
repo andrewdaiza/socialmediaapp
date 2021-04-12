@@ -28,7 +28,9 @@ const Comment = ({ commentUp, addComment, profiles, selectedComment }) => {
           onChange={(e) => setComment(e.target.value)}
         ></input>
         <div>
-          <button type='submit'>Comment</button>
+          <button className='post-button comment-text-button' type='submit'>
+            Comment
+          </button>
         </div>
       </form>
     </div>

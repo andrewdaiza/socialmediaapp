@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Nav from './Nav';
@@ -229,6 +229,26 @@ const Home = () => {
       )
     );
   };
+
+  useEffect(() => {
+    if (popUpState) {
+      document.body.classList.add('background-grey');
+    } else {
+      document.body.classList.remove('background-grey');
+    }
+  }, [popUpState]);
+
+  useEffect(() => {
+    if (commentUpState) {
+      {
+        document.body.classList.add('background-grey');
+      }
+    } else {
+      {
+        document.body.classList.remove('background-grey');
+      }
+    }
+  }, [commentUpState]);
 
   return (
     <>
