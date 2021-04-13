@@ -3,7 +3,7 @@ import React from 'react';
 const Post = ({ post, profile, commentUpState, addLike, deletePost }) => {
   return (
     <div className='post-container'>
-      <a href={`/profile${profile.link}`}>
+      <a href={`${profile.link}`}>
         <img
           className='post-profile-pic'
           src={profile.img}
@@ -16,7 +16,7 @@ const Post = ({ post, profile, commentUpState, addLike, deletePost }) => {
             <i onClick={() => deletePost(post.id)} class='far fa-trash-alt'></i>
           </div>
         )}
-        <a href={`/profile${profile.link}`}>
+        <a href={`${profile.link}`}>
           <div className='post-name'>{profile.name}</div>
           <div className='post-user'>@{profile.user}</div>
         </a>

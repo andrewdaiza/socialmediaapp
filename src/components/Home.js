@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+} from 'react-router-dom';
 
 import Nav from './Nav';
 import Profile from './Profile';
@@ -272,32 +277,28 @@ const Home = () => {
           />
 
           <div className='inner-container'>
-            <Switch>
-              <Route exact path='/'>
-                {/* Maps through each profile user and each post within, outputs to post element */}
-                {userPosts.map((post) => (
-                  <Post
-                    key={post.id}
-                    profile={post.profile}
-                    post={post}
-                    userPosts={userPosts}
-                    commentUpState={handleCommentUpState}
-                    addLike={handleLike}
-                    deletePost={handleDeletePost}
-                  />
-                ))}
-              </Route>
-              <Route exact path='/profile'>
-                <Profile
-                  profiles={profiles}
-                  param={userParam}
-                  commentUpState={handleCommentUpState}
+            {userParam ? (
+              <Profile
+                profiles={profiles}
+                param={userParam}
+                commentUpState={handleCommentUpState}
+                userPosts={userPosts}
+                addLike={handleLike}
+                deletePost={handleDeletePost}
+              />
+            ) : (
+              userPosts.map((post) => (
+                <Post
+                  key={post.id}
+                  profile={post.profile}
+                  post={post}
                   userPosts={userPosts}
+                  commentUpState={handleCommentUpState}
                   addLike={handleLike}
                   deletePost={handleDeletePost}
                 />
-              </Route>
-            </Switch>
+              ))
+            )}
           </div>
           <div
             className={`home-profile-container ${
