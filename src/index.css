@@ -255,14 +255,20 @@ body {
 }
 
 .comments-container {
-  display: inline;
+  border-radius: 16px;
   width: 550px;
   height: 500px;
-  overflow: auto;
+  padding: 6px;
+}
+.comments-container-inner {
+  width: 550px;
+  height: 500px;
+  display: inline;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  overflow: auto;
 }
 .comments-container i {
   color: black;
@@ -430,26 +436,36 @@ body {
   .new-post-inner textarea {
     /* width: 75%; */
   }
+  .pop-out {
+    width: 100%;
+    height: 100%;
+  }
   .comments-container {
     display: block;
     width: 100%;
     height: 100%;
-    padding-left: 20%;
-    overflow: scroll;
-    overflow-x: hidden;
+    padding: 0px;
+    border-radius: 0px;
+  }
+  .comments-container-inner {
+    width: 90%;
+    height: 100%;
+    padding: 5%;
   }
 
   .comments-container i {
     color: black;
     font-size: 25px;
-    padding-left: 80%;
+  }
+  .comment-text-area {
+    width: 100%;
   }
   .comment-text-area input {
-    width: 80%;
+    width: 100%;
   }
   .show-comment-container {
     display: flex;
-    width: 80%;
+    width: 100%;
   }
   .post-profile-pic {
     /* border-radius: 200px; */

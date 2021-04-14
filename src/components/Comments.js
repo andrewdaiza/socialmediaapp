@@ -15,19 +15,25 @@ const Comments = ({
     <>
       {commentUpState && (
         <div className='comments-container pop-out'>
-          <Comment
-            commentUp={commentUp}
-            addComment={addComment}
-            profiles={profiles}
-            selectedComment={selectedComment}
-          />
+          <div className='comments-container-inner'>
+            <Comment
+              commentUp={commentUp}
+              addComment={addComment}
+              profiles={profiles}
+              selectedComment={selectedComment}
+            />
 
-          {commentState.map(
-            (c) =>
-              c.postId === selectedComment && (
-                <ShowComment key={c.id} commentState={c} profile={c.profile} />
-              )
-          )}
+            {commentState.map(
+              (c) =>
+                c.postId === selectedComment && (
+                  <ShowComment
+                    key={c.id}
+                    commentState={c}
+                    profile={c.profile}
+                  />
+                )
+            )}
+          </div>
         </div>
       )}
     </>
