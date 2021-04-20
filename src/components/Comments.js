@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Comment from './Comment';
-import ShowComment from './ShowComment';
+import ShowComment from './CommentList';
 
 const Comments = ({
   commentState,

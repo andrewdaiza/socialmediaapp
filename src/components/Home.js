@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useLocation,
-} from 'react-router-dom';
 
 import Nav from './Nav';
 import Profile from './Profile';
 import Post from './Post';
-import NewPost from './NewPost';
+import NewPost from './CreatePost';
 import Comments from './Comments';
-import HomeProfile from './HomeProfile';
+import HomeProfile from './HomeSidebar';
 
 import max from '../assets/profileMax.jpg';
 import amy from '../assets/profileAmy.jpg';
@@ -25,9 +19,7 @@ import cover1 from '../assets/cover1.jpg';
 import cover3 from '../assets/cover3.jpg';
 import cover5 from '../assets/cover5.jpg';
 import cover6 from '../assets/cover6.jpg';
-import cover7 from '../assets/cover7.jpg';
 import cover8 from '../assets/cover8.jpg';
-import cover9 from '../assets/cover9.jpg';
 
 const Home = () => {
   const profiles = [
@@ -262,58 +254,56 @@ const Home = () => {
 
   return (
     <>
-      <Router>
-        <div className='grid-container'>
-          <Nav popUp={handlePopUp} />
-          <NewPost
-            addPost={handlePost}
-            popUp={handlePopUp}
-            popUpState={popUpState}
-            profile={profiles[3]}
-          />
+      <div className='grid-container'>
+        <Nav popUp={handlePopUp} />
+        <NewPost
+          addPost={handlePost}
+          popUp={handlePopUp}
+          popUpState={popUpState}
+          profile={profiles[3]}
+        />
 
-          <Comments
-            commentState={commentState}
-            commentUpState={commentUpState}
-            addComment={handleComment}
-            commentUp={handleCommentUpState}
-            profiles={profiles}
-            selectedComment={selectedComment}
-          />
+        <Comments
+          commentState={commentState}
+          commentUpState={commentUpState}
+          addComment={handleComment}
+          commentUp={handleCommentUpState}
+          profiles={profiles}
+          selectedComment={selectedComment}
+        />
 
-          <div className='inner-container'>
-            {userParam ? (
-              <Profile
-                profiles={profiles}
-                param={userParam}
-                commentUpState={handleCommentUpState}
+        <div className='inner-container'>
+          {userParam ? (
+            <Profile
+              profiles={profiles}
+              param={userParam}
+              commentUpState={handleCommentUpState}
+              userPosts={userPosts}
+              addLike={handleLike}
+              deletePost={handleDeletePost}
+            />
+          ) : (
+            userPosts.map((post) => (
+              <Post
+                key={post.id}
+                profile={post.profile}
+                post={post}
                 userPosts={userPosts}
+                commentUpState={handleCommentUpState}
                 addLike={handleLike}
                 deletePost={handleDeletePost}
               />
-            ) : (
-              userPosts.map((post) => (
-                <Post
-                  key={post.id}
-                  profile={post.profile}
-                  post={post}
-                  userPosts={userPosts}
-                  commentUpState={handleCommentUpState}
-                  addLike={handleLike}
-                  deletePost={handleDeletePost}
-                />
-              ))
-            )}
-          </div>
-          <div
-            className={`home-profile-container ${
-              userParam !== null && 'home-profile-none'
-            }`}
-          >
-            <HomeProfile profile={profiles[3]} />
-          </div>
+            ))
+          )}
         </div>
-      </Router>
+        <div
+          className={`home-profile-container ${
+            userParam !== null && 'home-profile-none'
+          }`}
+        >
+          <HomeProfile profile={profiles[3]} />
+        </div>
+      </div>
     </>
   );
 };

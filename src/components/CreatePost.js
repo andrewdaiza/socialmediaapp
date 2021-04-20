@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NewPostForm from './NewPostForm';
+import NewPostForm from './CreatePostForm';
 
 const NewPost = ({ addPost, popUp, popUpState, profile }) => {
   return (
