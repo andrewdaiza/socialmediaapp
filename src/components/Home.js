@@ -194,33 +194,36 @@ const Home = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const userParam = urlParams.get('user');
 
+  const [selectedComment, setSelectedComment] = useState();
+  const [commentUpState, setCommentUpState] = useState(false);
+  const [popUpState, setPopUpState] = useState(false);
+
+  // Create a Post
   const handlePost = (post) => {
     setUserPosts([...userPosts, post]);
   };
-
+  // Remove a post
   const handleDeletePost = (id) => {
     setUserPosts(userPosts.filter((post) => id !== post.id));
   };
 
+  // Add a comment
   const handleComment = (comment) => {
     setCommentState([...commentState, comment]);
   };
 
-  const [popUpState, setPopUpState] = useState(false);
-
+  // Launch Post
   const handlePopUp = () => {
     setPopUpState(!popUpState);
   };
 
-  const [selectedComment, setSelectedComment] = useState();
-
-  const [commentUpState, setCommentUpState] = useState(false);
-
+  // Launch comment
   const handleCommentUpState = (param) => {
     setSelectedComment(param);
     setCommentUpState(!commentUpState);
   };
 
+  // Add or Subtract like count
   const handleLike = (id) => {
     setUserPosts(
       userPosts.map((post) =>
@@ -235,6 +238,7 @@ const Home = () => {
     );
   };
 
+  // Grey out background when Post displays
   useEffect(() => {
     if (popUpState) {
       document.body.classList.add('background-grey');
@@ -243,6 +247,7 @@ const Home = () => {
     }
   }, [popUpState]);
 
+  // Grey out background when Comment displays
   useEffect(() => {
     if (commentUpState) {
       {
