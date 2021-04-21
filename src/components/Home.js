@@ -1,84 +1,83 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import Nav from './Nav';
-import Profile from './Profile';
-import Post from './Post';
-import NewPost from './CreatePost';
-import Comments from './Comments';
-import HomeProfile from './HomeSidebar';
+import Nav from "./Nav";
+import Profile from "./Profile";
+import Post from "./Post";
+import NewPost from "./CreatePost";
+import Comments from "./Comments";
+import HomeSidebar from "./HomeSidebar";
 
-import max from '../assets/profileMax.jpg';
-import amy from '../assets/profileAmy.jpg';
-import sydney from '../assets/profileSydney.jpg';
-import ben from '../assets/profileBen.jpg';
-import henry from '../assets/profileHenry.jpg';
-import mark from '../assets/profileMark.jpg';
+import max from "../assets/profileMax.jpg";
+import amy from "../assets/profileAmy.jpg";
+import sydney from "../assets/profileSydney.jpg";
+import ben from "../assets/profileBen.jpg";
+import henry from "../assets/profileHenry.jpg";
+import mark from "../assets/profileMark.jpg";
 
-import cover1 from '../assets/cover1.jpg';
-import cover2 from '../assets/cover2.jpg';
-import cover3 from '../assets/cover3.jpg';
-import cover5 from '../assets/cover5.jpg';
-import cover6 from '../assets/cover6.jpg';
-import cover8 from '../assets/cover8.jpg';
-import HomeSidebar from './HomeSidebar';
+import cover1 from "../assets/cover1.jpg";
+import cover2 from "../assets/cover2.jpg";
+import cover3 from "../assets/cover3.jpg";
+import cover5 from "../assets/cover5.jpg";
+import cover6 from "../assets/cover6.jpg";
+import cover8 from "../assets/cover8.jpg";
 
 const Home = () => {
   const profiles = [
     {
       id: 1,
-      name: 'Max',
-      user: 'max',
+      name: "Max",
+      user: "max",
       img: max,
-      link: '?user=max',
+      link: "?user=max",
       cover: cover2,
-      description: 'Life is about the journey, not the destination',
+      description: "Life is about the journey, not the destination",
     },
     {
       id: 2,
-      name: 'Sydney',
-      user: 'sydney',
+      name: "Sydney",
+      user: "sydney",
       img: sydney,
       cover: cover1,
-      link: '?user=sydney',
-      description: 'Live life to the fullest, and focus on the positive',
+      link: "?user=sydney",
+      description: "Live life to the fullest, and focus on the positive",
     },
     {
       id: 3,
-      name: 'Henry',
-      user: 'henry',
+      name: "Henry",
+      user: "henry",
       img: henry,
       cover: cover6,
-      link: '?user=henry',
-      description: 'Professional photographer, designer and video editor',
+      link: "?user=henry",
+      description: "Professional photographer, designer and video editor",
     },
 
     {
       id: 4,
-      name: 'User',
-      user: 'user',
+      name: "User",
+      user: "user",
       img: ben,
       cover: cover3,
-      link: '?user=user',
+      link: "?user=user",
       description:
         "The sky is the limit, we don't stop until we achieve our goals",
     },
     {
       id: 5,
-      name: 'Amy',
-      user: 'amy',
+      name: "Amy",
+      user: "amy",
       img: amy,
       cover: cover5,
-      link: '?user=amy',
+      link: "?user=amy",
       description: "No matter what happens, I'm living to be happy.",
     },
     {
       id: 6,
-      name: 'Mark',
-      user: 'mark',
+      name: "Mark",
+      user: "mark",
       img: mark,
       cover: cover8,
-      link: '?user=mark',
-      description: 'Life is about the journey, not the destination',
+      link: "?user=mark",
+      description: "Life is about the journey, not the destination",
     },
   ];
 
@@ -88,7 +87,7 @@ const Home = () => {
       profile: profiles[0],
       liked: false,
       likeCount: 2,
-      post: 'Wow, this new social media application is cool!',
+      post: "Wow, this new social media application is cool!",
     },
     {
       id: 101,
@@ -103,14 +102,14 @@ const Home = () => {
       liked: false,
       likeCount: 4,
       post:
-        'Just got done shooting my new photoshoot, should be out soon, keep watching for details!',
+        "Just got done shooting my new photoshoot, should be out soon, keep watching for details!",
     },
     {
       id: 103,
       profile: profiles[1],
       liked: false,
       likeCount: 2,
-      post: 'I love how simple this application is to use, wow incredible!',
+      post: "I love how simple this application is to use, wow incredible!",
     },
 
     {
@@ -118,14 +117,14 @@ const Home = () => {
       profile: profiles[5],
       liked: false,
       likeCount: 3,
-      post: 'Hey this is my first post!',
+      post: "Hey this is my first post!",
     },
     {
       id: 105,
       profile: profiles[0],
       liked: false,
       likeCount: 2,
-      post: 'Trying this new app out.',
+      post: "Trying this new app out.",
     },
 
     {
@@ -140,7 +139,7 @@ const Home = () => {
       profile: profiles[3],
       liked: false,
       likeCount: 0,
-      post: 'This is my first post!',
+      post: "This is my first post!",
     },
     {
       id: 108,
@@ -156,25 +155,25 @@ const Home = () => {
       id: 1001,
       postId: 100,
       profile: profiles[1],
-      comment: 'I know right!?',
+      comment: "I know right!?",
     },
     {
       id: 1002,
       postId: 100,
       profile: profiles[2],
-      comment: 'Incredible!',
+      comment: "Incredible!",
     },
     {
       id: 1003,
       postId: 104,
       profile: profiles[0],
-      comment: 'Hey there!',
+      comment: "Hey there!",
     },
     {
       id: 1004,
       postId: 101,
       profile: profiles[5],
-      comment: 'Doing great how about you?',
+      comment: "Doing great how about you?",
     },
     {
       id: 1005,
@@ -186,13 +185,13 @@ const Home = () => {
       id: 1006,
       postId: 104,
       profile: profiles[4],
-      comment: 'Welcome!',
+      comment: "Welcome!",
     },
     {
       id: 1007,
       postId: 102,
       profile: profiles[5],
-      comment: 'This is epic!',
+      comment: "This is epic!",
     },
     {
       id: 1008,
@@ -204,18 +203,18 @@ const Home = () => {
       id: 1009,
       postId: 104,
       profile: profiles[1],
-      comment: 'Hello! :)',
+      comment: "Hello! :)",
     },
     {
       id: 1010,
       postId: 106,
       profile: profiles[2],
-      comment: 'Enjoy!',
+      comment: "Enjoy!",
     },
   ]);
 
   const urlParams = new URLSearchParams(window.location.search);
-  const userParam = urlParams.get('user');
+  const userParam = urlParams.get("user");
 
   const [selectedComment, setSelectedComment] = useState();
   const [commentUpState, setCommentUpState] = useState(false);
@@ -264,9 +263,9 @@ const Home = () => {
   // Grey out background when Post displays
   useEffect(() => {
     if (popUpState) {
-      document.body.classList.add('background-grey');
+      document.body.classList.add("background-grey");
     } else {
-      document.body.classList.remove('background-grey');
+      document.body.classList.remove("background-grey");
     }
   }, [popUpState]);
 
@@ -274,11 +273,11 @@ const Home = () => {
   useEffect(() => {
     if (commentUpState) {
       {
-        document.body.classList.add('background-grey');
+        document.body.classList.add("background-grey");
       }
     } else {
       {
-        document.body.classList.remove('background-grey');
+        document.body.classList.remove("background-grey");
       }
     }
   }, [commentUpState]);
@@ -329,7 +328,7 @@ const Home = () => {
         </div>
         <div
           className={`home-profile-container ${
-            userParam !== null && 'home-profile-none'
+            userParam !== null && "home-profile-none"
           }`}
         >
           <HomeSidebar profile={profiles[3]} />

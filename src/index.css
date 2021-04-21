@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
   font-size: 18px;
 }
@@ -26,9 +26,9 @@ a:after {
   grid-template-rows: 0.1fr 1fr 1fr;
   gap: 0px 10px;
   grid-template-areas:
-    'Nav Nav Nav'
-    '. Tweets Profile'
-    '. Tweets .';
+    "Nav Nav Nav"
+    ". Tweets Profile"
+    ". Tweets .";
   margin: 0px auto;
 }
 
@@ -49,6 +49,10 @@ a:after {
 .content-text {
   padding-top: 5px;
 }
+
+/* --------------------------------------- */
+/* --------------NAVIGATION--------------- */
+/* --------------------------------------- */
 
 .nav {
   grid-area: Nav;
@@ -80,6 +84,11 @@ a:after {
 .nav-icons a::after {
   color: #000;
 }
+
+/* --------------------------------------- */
+/* -----------------POSTS----------------- */
+/* --------------------------------------- */
+
 .inner-container {
   grid-area: Tweets;
   width: 600px;
@@ -138,8 +147,10 @@ a:after {
 .post-like-count {
   padding-left: 10px;
 }
-.post-like-text {
-}
+
+/* --------------------------------------- */
+/* ----------------SIDEBAR---------------- */
+/* --------------------------------------- */
 
 .home-profile-container {
   grid-area: Profile;
@@ -170,6 +181,10 @@ a:after {
   height: 150px;
   border-radius: 200px;
 }
+
+/* --------------------------------------- */
+/* ----------------PROFILE---------------- */
+/* --------------------------------------- */
 
 .profile-container {
   margin-top: 10px;
@@ -206,6 +221,10 @@ a:after {
   width: 600px;
   height: 300px;
 }
+/* --------------------------------------- */
+/* ----------------NEW-POST--------------- */
+/* --------------------------------------- */
+
 .background-grey {
   position: fixed;
   z-index: 0.9;
@@ -259,6 +278,10 @@ a:after {
   font-size: 25px;
 }
 
+/* --------------------------------------- */
+/* ----------------COMMENTS--------------- */
+/* --------------------------------------- */
+
 .comments-container {
   border-radius: 16px;
   width: 550px;
@@ -311,15 +334,19 @@ a:after {
   padding-left: 20px;
 }
 
+/* --------------------------------------- */
+/* -------------MEDIA-QUERIES------------- */
+/* --------------------------------------- */
+
 @media only screen and (max-width: 1025px) {
   .grid-container {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 0.1fr 1fr 1fr;
     gap: 0px 0px;
     grid-template-areas:
-      '. Nav .'
-      '. Tweets .'
-      '. Tweets .';
+      ". Nav ."
+      ". Tweets ."
+      ". Tweets .";
     margin: 0px auto;
   }
   .inner-container {
@@ -349,16 +376,16 @@ a:after {
     width: 500px;
   }
 }
-/* Extra small devices (phones, 600px and down) */
+
 @media only screen and (max-width: 600px) {
   .grid-container {
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 1fr 1fr;
     gap: 0px 0px;
     grid-template-areas:
-      'Nav'
-      'Tweets'
-      'Tweets';
+      "Nav"
+      "Tweets"
+      "Tweets";
     margin: 0px 0px;
   }
   .inner-container {
@@ -395,8 +422,6 @@ a:after {
   }
   .profile-container {
     width: 100%;
-  }
-  .profile-details-container {
   }
   .cover-photo {
     width: 100%;
@@ -437,9 +462,6 @@ a:after {
   .post-like-text {
     display: none;
   }
-  .new-post-inner textarea {
-    /* width: 75%; */
-  }
   .pop-out {
     width: 100%;
     height: 100%;
@@ -472,7 +494,6 @@ a:after {
     width: 100%;
   }
   .post-profile-pic {
-    /* border-radius: 200px; */
     display: block;
     width: 100px;
     height: 100px;
