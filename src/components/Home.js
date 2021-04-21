@@ -14,8 +14,8 @@ import ben from '../assets/profileBen.jpg';
 import henry from '../assets/profileHenry.jpg';
 import mark from '../assets/profileMark.jpg';
 
-import coverMax from '../assets/coverMax.jpg';
 import cover1 from '../assets/cover1.jpg';
+import cover2 from '../assets/cover2.jpg';
 import cover3 from '../assets/cover3.jpg';
 import cover5 from '../assets/cover5.jpg';
 import cover6 from '../assets/cover6.jpg';
@@ -29,7 +29,7 @@ const Home = () => {
       user: 'max',
       img: max,
       link: '?user=max',
-      cover: coverMax,
+      cover: cover2,
       description: 'Life is about the journey, not the destination',
     },
     {
@@ -94,7 +94,7 @@ const Home = () => {
       profile: profiles[4],
       liked: false,
       likeCount: 3,
-      post: "Haha idk what to say, how's everybody doing today?",
+      post: "How's everybody doing today?",
     },
     {
       id: 102,
@@ -124,7 +124,7 @@ const Home = () => {
       profile: profiles[0],
       liked: false,
       likeCount: 0,
-      post: "How is everyone's day going?",
+      post: 'Trying this new app out.',
     },
 
     {
@@ -164,22 +164,40 @@ const Home = () => {
       comment: 'Incredible!',
     },
     {
+      id: 1002,
+      postId: 100,
+      profile: profiles[0],
+      comment: "Yeah I'm enjoying it!",
+    },
+    {
       id: 1003,
       postId: 101,
       profile: profiles[5],
       comment: 'Doing great how about you?',
     },
     {
+      id: 1003,
+      postId: 101,
+      profile: profiles[4],
+      comment: "It's a great day!",
+    },
+    {
       id: 1004,
-      postId: 102,
+      postId: 104,
       profile: profiles[4],
       comment: 'Welcome!',
     },
     {
       id: 1005,
-      postId: 103,
+      postId: 102,
       profile: profiles[5],
       comment: 'This is epic!',
+    },
+    {
+      id: 1005,
+      postId: 102,
+      profile: profiles[1],
+      comment: "Can't wait to hear more!",
     },
   ]);
 

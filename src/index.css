@@ -7,6 +7,14 @@ body {
     Arial, sans-serif;
   font-size: 18px;
 }
+a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+a:after {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 0.5fr 1fr;
