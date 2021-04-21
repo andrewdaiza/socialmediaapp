@@ -1,16 +1,16 @@
 import React from 'react';
 
-const HomeProfile = ({ profile }) => {
+const HomeSidebar = ({ profile }) => {
   return (
     <div className='home-profile-inner'>
       <a href='?user=user'>
         <img className='home-profile-img' src={profile.img}></img>
-        <div className='home-profile-name'>{profile.name}</div>
-        <div className='home-profile-user'>@{profile.user}</div>
+        <div className='profile-name'>{profile.name}</div>
+        <div className='profile-user'>@{profile.user}</div>
       </a>
-      <div className='home-profile-description'>{profile.description}</div>
+      <div className='profile-description'>{profile.description}</div>
     </div>
   );
 };
 
-export default HomeProfile;
+export default HomeSidebar;

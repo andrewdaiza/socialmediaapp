@@ -1,14 +1,14 @@
 import React from 'react';
 
-import NewPostForm from './CreatePostForm';
+import CreatePostForm from './CreatePostForm';
 
-const NewPost = ({ addPost, popUp, popUpState, profile }) => {
+const CreatePost = ({ addPost, popUp, popUpState, profile }) => {
   return (
     <>
       {popUpState && (
         <>
           <div className='new-post-container pop-out'>
-            <NewPostForm addPost={addPost} popUp={popUp} profile={profile} />
+            <CreatePostForm addPost={addPost} popUp={popUp} profile={profile} />
           </div>
         </>
       )}
@@ -16,4 +16,4 @@ const NewPost = ({ addPost, popUp, popUpState, profile }) => {
   );
 };
 
-export default NewPost;
+export default CreatePost;

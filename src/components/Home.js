@@ -20,6 +20,7 @@ import cover3 from '../assets/cover3.jpg';
 import cover5 from '../assets/cover5.jpg';
 import cover6 from '../assets/cover6.jpg';
 import cover8 from '../assets/cover8.jpg';
+import HomeSidebar from './HomeSidebar';
 
 const Home = () => {
   const profiles = [
@@ -86,7 +87,7 @@ const Home = () => {
       id: 100,
       profile: profiles[0],
       liked: false,
-      likeCount: 3,
+      likeCount: 2,
       post: 'Wow, this new social media application is cool!',
     },
     {
@@ -100,15 +101,15 @@ const Home = () => {
       id: 102,
       profile: profiles[2],
       liked: false,
-      likeCount: 0,
+      likeCount: 4,
       post:
-        'Just got done shooting for my new photoshoot, should be out soon, keep watching for details!',
+        'Just got done shooting my new photoshoot, should be out soon, keep watching for details!',
     },
     {
       id: 103,
       profile: profiles[1],
       liked: false,
-      likeCount: 0,
+      likeCount: 2,
       post: 'I love how simple this application is to use, wow incredible!',
     },
 
@@ -116,14 +117,14 @@ const Home = () => {
       id: 104,
       profile: profiles[5],
       liked: false,
-      likeCount: 0,
+      likeCount: 3,
       post: 'Hey this is my first post!',
     },
     {
       id: 105,
       profile: profiles[0],
       liked: false,
-      likeCount: 0,
+      likeCount: 2,
       post: 'Trying this new app out.',
     },
 
@@ -131,7 +132,7 @@ const Home = () => {
       id: 106,
       profile: profiles[1],
       liked: false,
-      likeCount: 0,
+      likeCount: 4,
       post: "I'm about to go out for a run!",
     },
     {
@@ -139,14 +140,14 @@ const Home = () => {
       profile: profiles[3],
       liked: false,
       likeCount: 0,
-      post: 'This is my first post',
+      post: 'This is my first post!',
     },
     {
       id: 108,
       profile: profiles[3],
       liked: false,
       likeCount: 0,
-      post: 'Woah, this is a cool app!',
+      post: "It's a beautiful day outside!",
     },
   ]);
 
@@ -164,40 +165,52 @@ const Home = () => {
       comment: 'Incredible!',
     },
     {
-      id: 1002,
-      postId: 100,
+      id: 1003,
+      postId: 104,
       profile: profiles[0],
-      comment: "Yeah I'm enjoying it!",
+      comment: 'Hey there!',
     },
     {
-      id: 1003,
+      id: 1004,
       postId: 101,
       profile: profiles[5],
       comment: 'Doing great how about you?',
     },
     {
-      id: 1003,
+      id: 1005,
       postId: 101,
       profile: profiles[4],
       comment: "It's a great day!",
     },
     {
-      id: 1004,
+      id: 1006,
       postId: 104,
       profile: profiles[4],
       comment: 'Welcome!',
     },
     {
-      id: 1005,
+      id: 1007,
       postId: 102,
       profile: profiles[5],
       comment: 'This is epic!',
     },
     {
-      id: 1005,
+      id: 1008,
       postId: 102,
       profile: profiles[1],
       comment: "Can't wait to hear more!",
+    },
+    {
+      id: 1009,
+      postId: 104,
+      profile: profiles[1],
+      comment: 'Hello! :)',
+    },
+    {
+      id: 1010,
+      postId: 106,
+      profile: profiles[2],
+      comment: 'Enjoy!',
     },
   ]);
 
@@ -319,7 +332,7 @@ const Home = () => {
             userParam !== null && 'home-profile-none'
           }`}
         >
-          <HomeProfile profile={profiles[3]} />
+          <HomeSidebar profile={profiles[3]} />
         </div>
       </div>
     </>

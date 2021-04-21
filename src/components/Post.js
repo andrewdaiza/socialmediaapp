@@ -7,7 +7,7 @@ const Post = ({ post, profile, commentUpState, addLike, deletePost }) => {
         <img
           className='post-profile-pic'
           src={profile.img}
-          alt='Profile Picture'
+          alt='Profile Photo of the user who created the post'
         />
       </a>
       <div className='post-details'>
@@ -17,10 +17,10 @@ const Post = ({ post, profile, commentUpState, addLike, deletePost }) => {
           </div>
         )}
         <a href={`${profile.link}`}>
-          <div className='post-name'>{profile.name}</div>
-          <div className='post-user'>@{profile.user}</div>
+          <div className='name'>{profile.name}</div>
+          <div className='user-name'>@{profile.user}</div>
         </a>
-        <div className='post-text'>{post.post}</div>
+        <div className='content-text'>{post.post}</div>
         {post.tweetimg && (
           <img className='post-photo' src={post.tweetimg} alt='post photo' />
         )}

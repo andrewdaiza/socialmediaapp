@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const NewPostForm = ({ addPost, popUp, profile }) => {
+const CreatePostForm = ({ addPost, popUp, profile }) => {
   const [post, setPost] = useState('');
   const onSubmit = (e) => {
     e.preventDefault();
@@ -36,4 +36,4 @@ const NewPostForm = ({ addPost, popUp, profile }) => {
   );
 };
 
-export default NewPostForm;
+export default CreatePostForm;

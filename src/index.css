@@ -7,6 +7,11 @@ body {
     Arial, sans-serif;
   font-size: 18px;
 }
+
+/* --------------------------------------- */
+/* -------------GLOBAL-STYLES------------- */
+/* --------------------------------------- */
+
 a {
   text-decoration: none;
   color: rgb(0, 0, 0);
@@ -26,6 +31,25 @@ a:after {
     '. Tweets .';
   margin: 0px auto;
 }
+
+/* --------------------------------------- */
+/* --------------RE-USEABLE--------------- */
+/* --------------------------------------- */
+
+.user-name {
+  color: rgb(66, 206, 206);
+  font-size: 90%;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.content-text {
+  padding-top: 5px;
+}
+
 .nav {
   grid-area: Nav;
   background-color: rgb(66, 206, 206);
@@ -34,6 +58,10 @@ a:after {
   width: 100%;
   text-align: center;
   box-shadow: 2px 2px 2px grey;
+}
+.nav-text {
+  font-weight: 700;
+  font-size: 120%;
 }
 .nav-icons {
   display: flex;
@@ -50,7 +78,6 @@ a:after {
 }
 .nav-icons a,
 .nav-icons a::after {
-  text-decoration: none;
   color: #000;
 }
 .inner-container {
@@ -73,15 +100,6 @@ a:after {
   width: 175px;
   height: 175px;
 }
-.post-name {
-  font-weight: bold;
-  text-decoration: none;
-}
-.post-user {
-  color: rgb(66, 206, 206);
-  font-size: 90%;
-  text-decoration: none;
-}
 
 .post-details {
   display: flex;
@@ -98,19 +116,11 @@ a:after {
 .fa-trash-alt {
   color: red;
 }
-.post-name {
-  font-size: 120%;
-}
-.post-text {
-  padding-top: 5px;
-}
 
 .post-details a {
-  text-decoration: none;
   color: #000;
 }
 .post-details a:visited {
-  text-decoration: none;
   color: #000;
 }
 .post-photo {
@@ -150,18 +160,8 @@ a:after {
   flex-direction: column;
   align-items: center;
   color: rgb(0, 0, 0);
-  text-decoration: none;
 }
-.home-profile-name {
-  font-size: 22px;
-  font-weight: bold;
-}
-.home-profile-user {
-  color: rgb(66, 206, 206);
-}
-.home-profile-description {
-  padding: 10px;
-}
+
 .home-profile-none {
   display: none;
 }
@@ -170,6 +170,7 @@ a:after {
   height: 150px;
   border-radius: 200px;
 }
+
 .profile-container {
   margin-top: 10px;
   width: 600px;
@@ -234,14 +235,11 @@ a:after {
   color: #ffffff;
   font-size: 100%;
   padding: 8px 18px;
-  text-decoration: none;
 }
 .post-button:hover,
 .post-button:active {
   background-color: rgb(10, 206, 206);
   outline: none;
-}
-.new-post-container {
 }
 
 .new-post-inner {
@@ -311,9 +309,6 @@ a:after {
   display: flex;
   flex-direction: column;
   padding-left: 20px;
-}
-.show-comment-comment-text {
-  padding-top: 10px;
 }
 
 @media only screen and (max-width: 1025px) {
@@ -387,7 +382,6 @@ a:after {
     padding: 10px 25px;
   }
   .nav-icons a {
-    text-decoration: none;
     font-size: 25px;
   }
   .nav-text {
@@ -417,6 +411,7 @@ a:after {
   }
   .new-post-container {
     width: 95%;
+    border-radius: 0px;
   }
   .new-post-inner {
     width: 95%;
@@ -434,7 +429,9 @@ a:after {
     width: 100%;
   }
   .new-post-form textarea {
-    width: 100%;
+    width: 95%;
+    margin-top: 2%;
+    padding-left: 4%;
   }
 
   .post-like-text {

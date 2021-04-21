@@ -1,7 +1,7 @@
 import React from 'react';
 
+import CommentForm from './CommentForm';
 import Comment from './Comment';
-import ShowComment from './CommentList';
 
 const Comments = ({
   commentState,
@@ -16,7 +16,7 @@ const Comments = ({
       {commentUpState && (
         <div className='comments-container pop-out'>
           <div className='comments-container-inner'>
-            <Comment
+            <CommentForm
               commentUp={commentUp}
               addComment={addComment}
               profiles={profiles}
@@ -26,11 +26,7 @@ const Comments = ({
             {commentState.map(
               (c) =>
                 c.postId === selectedComment && (
-                  <ShowComment
-                    key={c.id}
-                    commentState={c}
-                    profile={c.profile}
-                  />
+                  <Comment key={c.id} commentState={c} profile={c.profile} />
                 )
             )}
           </div>
