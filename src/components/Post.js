@@ -1,17 +1,19 @@
-import React from 'react';
+import React from "react";
 
 const Post = ({ post, profile, commentUpState, addLike, deletePost }) => {
   return (
     <div className='post-container'>
-      <a href={`${profile.link}`}>
-        <img
-          className='post-profile-pic'
-          src={profile.img}
-          alt='Profile Photo of the user who created the post'
-        />
-      </a>
+      <div class='post-pic-container'>
+        <a href={`${profile.link}`}>
+          <img
+            className='post-profile-pic'
+            src={profile.img}
+            alt='Profile Photo of the user who created the post'
+          />
+        </a>
+      </div>
       <div className='post-details'>
-        {profile.user === 'user' && (
+        {profile.user === "user" && (
           <div className='post-delete'>
             <i onClick={() => deletePost(post.id)} class='far fa-trash-alt'></i>
           </div>
