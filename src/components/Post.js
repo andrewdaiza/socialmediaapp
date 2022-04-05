@@ -1,8 +1,10 @@
 import React from "react";
+import LikeComment from "./LikeComment";
+import Card from "./UI/Card";
 
 const Post = ({ post, profile, commentUpState, addLike, deletePost }) => {
   return (
-    <div className='post-container'>
+    <Card>
       <div class='post-pic-container'>
         <a href={`${profile.link}`}>
           <img
@@ -26,30 +28,13 @@ const Post = ({ post, profile, commentUpState, addLike, deletePost }) => {
         {post.tweetimg && (
           <img className='post-photo' src={post.tweetimg} alt='post photo' />
         )}
-        <div className='post-likes'>
-          <span onClick={() => addLike(post.id)}>
-            {post.liked ? (
-              <>
-                <i className='fas fa-heart'>
-                  <span className='post-like-count'>{post.likeCount}</span>
-                </i>
-              </>
-            ) : (
-              <>
-                <i className='far fa-heart'>
-                  <span className='post-like-count'>{post.likeCount}</span>
-                </i>
-              </>
-            )}
-          </span>
-          <span className='post-like-text'>Like</span>
-          <a href='#' onClick={() => commentUpState(post.id)}>
-            <i className='far fa-comment-alt'></i>
-          </a>
-          <span className='post-like-text'>Comment</span>
-        </div>
+        <LikeComment
+          post={post}
+          addLike={addLike}
+          commentUpState={commentUpState}
+        />
       </div>
-    </div>
+    </Card>
   );
 };
 

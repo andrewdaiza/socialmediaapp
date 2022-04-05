@@ -87,7 +87,7 @@ const Home = () => {
       profile: profiles[0],
       liked: false,
       likeCount: 2,
-      post: "Wow, this new social media application is cool!",
+      post: "Wow, this new social media app is cool!",
     },
     {
       id: 101,
@@ -101,8 +101,7 @@ const Home = () => {
       profile: profiles[2],
       liked: false,
       likeCount: 4,
-      post:
-        "Just got done shooting my new photoshoot, should be out soon, keep watching for details!",
+      post: "Just got done shooting my new photoshoot, should be out soon, keep watching for details!",
     },
     {
       id: 103,
@@ -260,81 +259,63 @@ const Home = () => {
     );
   };
 
-  // Grey out background when Post displays
-  useEffect(() => {
-    if (popUpState) {
-      document.body.classList.add("background-grey");
-    } else {
-      document.body.classList.remove("background-grey");
-    }
-  }, [popUpState]);
-
-  // Grey out background when Comment displays
-  useEffect(() => {
-    if (commentUpState) {
-      {
-        document.body.classList.add("background-grey");
-      }
-    } else {
-      {
-        document.body.classList.remove("background-grey");
-      }
-    }
-  }, [commentUpState]);
-
   return (
-    <>
-      <div className='grid-container'>
-        <Nav popUp={handlePopUp} />
-        <NewPost
-          addPost={handlePost}
-          popUp={handlePopUp}
-          popUpState={popUpState}
-          profile={profiles[3]}
-        />
+    <div
+      className={
+        popUpState || commentUpState
+          ? "grid-container background-grey"
+          : "grid-container"
+      }
+    >
+      <Nav popUp={handlePopUp} />
+      <NewPost
+        addPost={handlePost}
+        popUp={handlePopUp}
+        popUpState={popUpState}
+        profile={profiles[3]}
+      />
 
-        <Comments
-          commentState={commentState}
-          commentUpState={commentUpState}
-          addComment={handleComment}
-          commentUp={handleCommentUpState}
-          profiles={profiles}
-          selectedComment={selectedComment}
-        />
+      <Comments
+        commentState={commentState}
+        commentUpState={commentUpState}
+        addComment={handleComment}
+        commentUp={handleCommentUpState}
+        profiles={profiles}
+        selectedComment={selectedComment}
+      />
 
-        <div className='inner-container'>
-          {userParam ? (
-            <Profile
-              profiles={profiles}
-              param={userParam}
-              commentUpState={handleCommentUpState}
+      <div className='inner-container'>
+        {userParam ? (
+          <Profile
+            profiles={profiles}
+            param={userParam}
+            commentUpState={handleCommentUpState}
+            userPosts={userPosts}
+            addLike={handleLike}
+            deletePost={handleDeletePost}
+          />
+        ) : (
+          userPosts.map((post) => (
+            <Post
+              key={post.id}
+              profile={post.profile}
+              post={post}
               userPosts={userPosts}
+              commentUpState={handleCommentUpState}
               addLike={handleLike}
               deletePost={handleDeletePost}
             />
-          ) : (
-            userPosts.map((post) => (
-              <Post
-                key={post.id}
-                profile={post.profile}
-                post={post}
-                userPosts={userPosts}
-                commentUpState={handleCommentUpState}
-                addLike={handleLike}
-                deletePost={handleDeletePost}
-              />
-            ))
-          )}
-        </div>
-        <div
-          className={`home-profile-container ${
-            userParam !== null && "home-profile-none"
-          }`}
-        >
-          <HomeSidebar profile={profiles[3]} />
-        </div>
+          ))
+        )}
       </div>
-    </>
+      <div
+        className={`home-profile-container ${
+          userParam !== null && "home-profile-none"
+        }`}
+      >
+        <HomeSidebar profile={profiles[3]} />
+      </div>
+    </div>
   );
 };
 

@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
+import Card from "./UI/Card";
 
 const Comment = ({ commentState, profile }) => {
   return (
-    <div className='show-comment-container'>
+    <Card>
       <a href={`${profile.link}`}>
         <img className='show-comment-photo' src={profile.img} />
       </a>
@@ -13,7 +14,7 @@ const Comment = ({ commentState, profile }) => {
         </a>
         <p className='content-text'>{commentState.comment}</p>
       </div>
-    </div>
+    </Card>
   );
 };
 
